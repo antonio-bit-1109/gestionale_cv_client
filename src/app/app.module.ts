@@ -5,13 +5,23 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ButtonModule } from 'primeng/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DividerModule } from 'primeng/divider';
-
+import { MenubarModule } from 'primeng/menubar';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrazioneComponent } from './components/registrazione/registrazione.component';
+import { HomeComponent } from './components/home/home.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegistrazioneComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    RegistrazioneComponent,
+    HomeComponent,
+    HomePageComponent,
+    NavbarComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -19,6 +29,7 @@ import { RegistrazioneComponent } from './components/registrazione/registrazione
     NgbModule,
     ButtonModule,
     BrowserAnimationsModule,
+    MenubarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

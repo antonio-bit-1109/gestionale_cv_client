@@ -7,6 +7,13 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'registrazione', component: RegistrazioneComponent },
+  {
+    path: 'home',
+    loadChildren: () =>
+      import('../app/components/home/home-routing.module').then(
+        (module) => module.HomeRoutingModule
+      ),
+  },
 ];
 
 @NgModule({
