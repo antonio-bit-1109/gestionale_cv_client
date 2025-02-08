@@ -4,10 +4,10 @@
 // @import "bootstrap/scss/bootstrap";
 // @import "node_modules/primeng/resources/themes/lara-light-blue/theme.css";
 // @import "node_modules/primeng/resources/primeng.min.css";
-
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-@import "../node_modules/primeng/resources/themes/lara-light-blue/theme.css";
-@import "../node_modules/primeng/resources/primeng.css";
+@import "../src/color.scss";
+// @import "../node_modules/primeng/resources/themes/lara-light-blue/theme.css";
+// @import "../node_modules/primeng/resources/primeng.css";
 
 body {
   font-family: "Poppins", serif;
@@ -37,4 +37,17 @@ body {
   background-image: url("assets/images/sfondo_login.webp");
   background-position: center;
   background-size: cover;
+}
+
+.btn-primary {
+  border-radius: 0 !important;
+  background-color: $color-1 !important;
+  color: white !important;
+  border: 1px solid grey !important;
+}
+
+.btn-primary:hover {
+  background-color: $color-1-hover !important;
+  color: white !important;
+  border: 1px solid grey !important;
 }
