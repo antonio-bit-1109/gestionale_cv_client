@@ -6,9 +6,11 @@ import { ButtonModule } from 'primeng/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegistrazioneComponent } from './components/registrazione/registrazione.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoginComponent, RegistrazioneComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
