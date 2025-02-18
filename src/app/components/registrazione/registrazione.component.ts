@@ -110,6 +110,15 @@ export class RegistrazioneComponent {
           }
         },
       });
+      //
+    } else {
+      //
+      this.toastService.show(
+        'error',
+        'stai a fa gli impicci, SMETTILA SUBITO!',
+        'DONT DO IT!',
+        'toastRegistration'
+      );
     }
   }
 

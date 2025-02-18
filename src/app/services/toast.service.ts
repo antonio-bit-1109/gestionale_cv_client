@@ -13,7 +13,7 @@ export class ToastService {
       summary: summary,
       detail: content,
       key: key,
-      life: 2000,
+      life: 2500,
     });
   }
 }
