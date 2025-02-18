@@ -7,8 +7,13 @@ import {
   TrattamentoDatiMustBeTrue,
 } from '../../utility/CustomValidators/customValidators';
 import { UserService } from '../../services/user.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { IRegistrationReq } from '../../utility/modelRequests/modelReq';
+import { ToastService } from '../../services/toast.service';
+import {
+  MessageResp,
+  ValidationRespError,
+} from '../../utility/modelResponse/modelResp';
 
 @Component({
   selector: 'app-registrazione',
@@ -51,7 +56,11 @@ export class RegistrazioneComponent {
     { validators: [checkIfPswEqualConfirmPsw, TrattamentoDatiMustBeTrue] }
   );
 
-  constructor(private router: Router, private userService: UserService) {}
+  constructor(
+    private router: Router,
+    private userService: UserService,
+    private toastService: ToastService
+  ) {}
 
   public goToLogin() {
     this.router.navigateByUrl('login');
@@ -71,12 +80,34 @@ export class RegistrazioneComponent {
       };
 
       this.userService.registerUser(dataRegistration).subscribe({
-        next: (response) => {
-          console.log(response);
+        next: (resp: any) => {
+          const response = resp as MessageResp;
+          const cleanResp = response.message
+            .replaceAll('_', ' ')
+            .toLocaleUpperCase();
+          console.log(response.message);
           this.form.reset();
+          this.toastService.show(
+            'success',
+            cleanResp,
+            'registrazione utente',
+            'toastRegistration'
+          );
         },
         error: (err: HttpErrorResponse) => {
-          console.log(err.error);
+          const errMsg = err.error as ValidationRespError;
+          for (const key in errMsg) {
+            if (errMsg.hasOwnProperty(key)) {
+              const errorMessage = errMsg[key];
+
+              this.toastService.show(
+                'error',
+                errorMessage,
+                key.toString(),
+                'toastRegistration'
+              );
+            }
+          }
         },
       });
     }

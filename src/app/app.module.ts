@@ -8,6 +8,7 @@ import { DividerModule } from 'primeng/divider';
 import { MenubarModule } from 'primeng/menubar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastModule } from 'primeng/toast';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -15,6 +16,7 @@ import { RegistrazioneComponent } from './components/registrazione/registrazione
 import { HomeComponent } from './components/home/home.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -33,10 +35,11 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     NgbModule,
     ButtonModule,
     BrowserAnimationsModule,
+    ToastModule,
     MenubarModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
