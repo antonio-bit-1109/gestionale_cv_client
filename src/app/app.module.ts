@@ -6,6 +6,8 @@ import { ButtonModule } from 'primeng/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DividerModule } from 'primeng/divider';
 import { MenubarModule } from 'primeng/menubar';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrazioneComponent } from './components/registrazione/registrazione.component';
@@ -30,6 +32,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     ButtonModule,
     BrowserAnimationsModule,
     MenubarModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
