@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import {
-  AbstractControl,
-  FormControl,
-  FormGroup,
-  ValidatorFn,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Password } from 'primeng/password';
-import { checkIfPswEqualConfirmPsw } from '../../CustomValidators/customValidators';
+
+import {
+  checkIfPswEqualConfirmPsw,
+  TrattamentoDatiMustBeTrue,
+} from '../../utility/CustomValidators/customValidators';
+import { UserService } from '../../services/user.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { IRegistrationReq } from '../../utility/modelRequests/modelReq';
 
 @Component({
   selector: 'app-registrazione',
@@ -48,10 +48,10 @@ export class RegistrazioneComponent {
       ]),
       trattamento_dati: new FormControl(false, [Validators.required]),
     },
-    { validators: checkIfPswEqualConfirmPsw }
+    { validators: [checkIfPswEqualConfirmPsw, TrattamentoDatiMustBeTrue] }
   );
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private userService: UserService) {}
 
   public goToLogin() {
     this.router.navigateByUrl('login');
@@ -59,6 +59,27 @@ export class RegistrazioneComponent {
 
   public onSubmit() {
     console.log(this.form.value);
+
+    if (this.isFormValid()) {
+      const dataRegistration: IRegistrationReq = {
+        cognome: this.form.controls.cognome.value,
+        consensoTrattamentoDati: this.form.controls.trattamento_dati.value,
+        email: this.form.controls.email.value,
+        nome: this.form.controls.nome.value,
+        password: this.form.controls.password.value,
+        telefono: this.form.controls.telefono.value,
+      };
+
+      this.userService.registerUser(dataRegistration).subscribe({
+        next: (response) => {
+          console.log(response);
+          this.form.reset();
+        },
+        error: (err: HttpErrorResponse) => {
+          console.log(err.error);
+        },
+      });
+    }
   }
 
   public isFormValid() {

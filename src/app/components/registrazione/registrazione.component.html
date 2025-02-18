@@ -115,6 +115,10 @@
                             *ngIf="this.form.controls.trattamento_dati.value === false && this.form.controls.trattamento_dati.touched">
                             Obbligatorio accettare trattamento dati.
                         </p>
+                        <p class="text-danger"
+                            *ngIf="this.form.errors?.['trattamentoFalse'] && this.form.controls.trattamento_dati.touched">
+                            Obbligatorio accettare trattamento dati.
+                        </p>
                     </div>
 
                     <button [disabled]="!this.isFormValid()" type="submit" class="btn btn-primary">Registrati</button>
