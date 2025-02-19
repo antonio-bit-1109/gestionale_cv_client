@@ -56,3 +56,7 @@ body {
   color: $color-3-hover !important;
   border: 2px solid $color-3 !important;
 }
+
+.scale:hover {
+  scale: 1.1;
+}

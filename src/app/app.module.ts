@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DividerModule } from 'primeng/divider';
 import { MenubarModule } from 'primeng/menubar';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ToastModule } from 'primeng/toast';
 import { FormsModule } from '@angular/forms';
 import { SidebarModule } from 'primeng/sidebar';
@@ -20,6 +20,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MessageService } from 'primeng/api';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { tokenRequestInterceptor } from './interceptors/send-token-request.interceptor';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,14 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
     MenubarModule,
     ReactiveFormsModule,
   ],
-  providers: [MessageService],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: tokenRequestInterceptor,
+      multi: true,
+    },
+    MessageService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
