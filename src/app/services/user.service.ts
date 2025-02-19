@@ -22,4 +22,11 @@ export class UserService {
       }
     );
   }
+
+  public DoLogin(emailVal: string, passwordVal: string) {
+    return this.http.post(
+      `${environment.BASE_URL + environment.URL_USER + environment.LOGIN}`,
+      { email: emailVal, password: passwordVal }
+    );
+  }
 }

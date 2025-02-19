@@ -9,6 +9,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastModule } from 'primeng/toast';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -35,6 +36,7 @@ import { MessageService } from 'primeng/api';
     NgbModule,
     ButtonModule,
     BrowserAnimationsModule,
+    FormsModule,
     ToastModule,
     MenubarModule,
     ReactiveFormsModule,
