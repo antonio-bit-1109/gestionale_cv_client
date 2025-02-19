@@ -11,7 +11,18 @@ export class AuthService {
   public saveInStorage(token: string) {
     if (token && token.length) {
       localStorage.setItem('token', token);
+      return true;
     }
+
+    return false;
+  }
+
+  public isUserLoggedIn() {
+    return localStorage.getItem('token');
+  }
+
+  public logout() {
+    localStorage.removeItem('token');
   }
 
   public retriveTokenFromStorage() {

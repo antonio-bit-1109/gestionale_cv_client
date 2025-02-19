@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Password } from 'primeng/password';
+
 import { UserService } from '../../services/user.service';
 import { ToastService } from '../../services/toast.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -10,6 +10,7 @@ import {
   ValidationRespError,
 } from '../../utility/modelResponse/modelResp';
 import { AuthService } from '../../services/auth.service';
+import { SubjectService } from '../../services/subject.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
-export class LoginComponent {
+export class LoginComponent implements AfterViewInit {
   public form = new FormGroup({
     email: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
@@ -27,8 +28,31 @@ export class LoginComponent {
     private router: Router,
     private userService: UserService,
     private toastService: ToastService,
-    private authService: AuthService
+    private authService: AuthService,
+    private subjectService: SubjectService
   ) {}
+
+  // se accedo alla pagina di login tramite redirect effettuato dalla guardia ,
+  //  notifico l'utente che ce stato un problema ,
+  //  forse non loggato ?'
+  // per poter mostrare correttamente il toast devo aspettare che l html sia stato prima caricato, quindi uso il ciclo di vita after viewinit
+  ngAfterViewInit(): void {
+    console.log(this.subjectService.getMessage());
+
+    if (this.subjectService.getMessage() !== null) {
+      const messaggio = this.subjectService.getMessage();
+
+      this.toastService.show(
+        'error',
+        messaggio ? messaggio : 'default',
+        'errore redirect',
+        'toastLogin'
+      );
+
+      // pulisco il messaggio per resettare la procedura
+      this.subjectService.clearMessage();
+    }
+  }
 
   public goToRegistrazione() {
     this.router.navigateByUrl('registrazione');
@@ -54,14 +78,21 @@ export class LoginComponent {
             // se la login va a buon fine salvo il token in local storage
             // e notifico l'utente
 
-            this.authService.saveInStorage(tokenValue);
+            const result = this.authService.saveInStorage(tokenValue);
 
-            this.toastService.show(
-              'success',
-              'Login Effettuata con successo',
-              'LOGIN',
-              'toastLogin'
-            );
+            if (result) {
+              this.toastService.show(
+                'success',
+                'Login effettuata con successo',
+                'LOGIN',
+                'toastLogin'
+              );
+            }
+
+            setTimeout(() => {
+              this.router.navigateByUrl('/home');
+            }, 2500);
+
             // console.log(tokenResp);
           },
           error: (err: HttpErrorResponse) => {
