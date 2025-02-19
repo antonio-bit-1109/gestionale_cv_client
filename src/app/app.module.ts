@@ -21,6 +21,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { MessageService } from 'primeng/api';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { tokenRequestInterceptor } from './interceptors/send-token-request.interceptor';
+import { GetAllCvUserComponent } from './components/get-all-cv-user/get-all-cv-user.component';
+import { ModificaCvComponent } from './components/modifica-cv/modifica-cv.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { tokenRequestInterceptor } from './interceptors/send-token-request.inter
     HomePageComponent,
     NavbarComponent,
     SideBarComponent,
+    GetAllCvUserComponent,
+    ModificaCvComponent,
   ],
   imports: [
     BrowserModule,
