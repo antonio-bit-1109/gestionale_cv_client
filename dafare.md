@@ -1,0 +1,2 @@
+-[] controlla per bene edit cv
+-[] scrivi create del cv

@@ -11,3 +11,14 @@ export interface IGetSIngolo_cv {
   id_utente: number;
   id_cv: number;
 }
+
+export interface IEditCv {
+  idCv: number;
+  idUtente: number;
+  titolo: string;
+  competenze: string;
+  istruzione: string;
+  esperienzePrecedenti: string;
+  lingueConosciute: string;
+  descrizioneGenerale: string;
+}

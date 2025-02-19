@@ -1,10 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { CvService } from '../../services/cv.service';
 import { Icv, IRespSingoloCv } from '../../utility/modelResponse/modelResp';
 import { HttpErrorResponse } from '@angular/common/http';
+import { IEditCv } from '../../utility/modelRequests/modelReq';
 
 @Component({
   selector: 'app-modifica-cv',
@@ -69,5 +75,27 @@ export class ModificaCvComponent implements OnInit {
     return this.form.valid;
   }
 
-  public onSubmit() {}
+  public onSubmit() {
+    if (this.isFormValid()) {
+      const dataCV: IEditCv = {
+        competenze: this.form.controls.competenze.value,
+        descrizioneGenerale: this.form.controls.descrizioneGenerale.value,
+        esperienzePrecedenti: this.form.controls.esperienzePrecedenti.value,
+        idCv: Number(this.id_cv),
+        idUtente: Number(this.id_utente),
+        istruzione: this.form.controls.istruzione.value,
+        lingueConosciute: this.form.controls.lingueConosciute.value,
+        titolo: this.form.controls.titolo.value,
+      };
+
+      this.cvService.editCv(dataCV).subscribe({
+        next: (res) => {
+          console.log(res);
+        },
+        error: (err: HttpErrorResponse) => {
+          console.error(err.error);
+        },
+      });
+    }
+  }
 }
