@@ -6,3 +6,8 @@ export interface IRegistrationReq {
   password: string | null;
   consensoTrattamentoDati: boolean | null;
 }
+
+export interface IGetSIngolo_cv {
+  id_utente: number;
+  id_cv: number;
+}

@@ -15,4 +15,13 @@ export class CvService {
       }/${id_utente}`
     );
   }
+
+  public getDaticv(id_cvVal: string, id_utenteVal: string) {
+    return this.http.post(
+      `${
+        environment.BASE_URL + environment.URL_CV + environment.GET_SINGOLO_CV
+      }`,
+      { id_utente: id_utenteVal, id_cv: id_cvVal }
+    );
+  }
 }

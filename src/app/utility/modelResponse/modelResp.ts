@@ -25,6 +25,7 @@ export interface IRespListaCV {
 }
 
 export interface Icv {
+  id_cv: number;
   titolo: string;
   esperienze_Precedenti: string;
   competenze: string;
@@ -35,4 +36,22 @@ export interface Icv {
   updated_at: Date;
   proprietarioCV: string;
   Path_file_System_pdf: string;
+}
+
+export interface IRespSingoloCv {
+  cv: Icv;
+  message: string | null;
+}
+
+export interface ICv {
+  titolo: string;
+  esperienze_Precedenti: string;
+  competenze: string;
+  istruzione: string;
+  lingueConosciute: string;
+  descrizioneGenerale: string;
+  created_at: Date;
+  updated_at: Date | null;
+  proprietarioCV: string;
+  path_file_System_pdf: string;
 }

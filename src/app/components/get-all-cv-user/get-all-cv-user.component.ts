@@ -3,6 +3,7 @@ import { Icv, IRespListaCV } from '../../utility/modelResponse/modelResp';
 import { CvService } from '../../services/cv.service';
 import { AuthService } from '../../services/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-get-all-cv-user',
@@ -13,7 +14,11 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class GetAllCvUserComponent {
   public AllCvList: IRespListaCV | undefined;
 
-  constructor(private cvService: CvService, private authService: AuthService) {}
+  constructor(
+    private cvService: CvService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     if (this.authService.isUserLoggedIn() !== null) {
@@ -35,4 +40,8 @@ export class GetAllCvUserComponent {
   }
 
   public scaricaPdf(cv: Icv) {}
+
+  public goToModificaCv(id_cv: number) {
+    this.router.navigateByUrl(`/home/modifica-cv/${id_cv}`);
+  }
 }

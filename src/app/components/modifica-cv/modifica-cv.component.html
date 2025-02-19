@@ -1,1 +1,81 @@
-<p>modifica-cv works!</p>
+<div class="container-fluid sfondo min-vh-100">
+
+    <div class="row justify-content-center align-items-center min-vh-100">
+        <div class="col-11 col-md-8 col-lg-6">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()" class=" border-black p-5 rounded-5 shadow mb-4">
+                <div>
+                    <h2>Modifica dati Curriculum</h2>
+                </div>
+
+                <div class="form-group my-3">
+                    <label for="titolo">Inserisci Titolo curriculum</label>
+                    <input type="text" class="form-control" id="titolo" aria-describedby="titolo" name="titolo"
+                        placeholder="Inserisci titolo" formControlName="titolo">
+
+                    <p class="text-danger" *ngIf="this.form.controls.titolo.touched &&
+                         this.form.controls.titolo.hasError('required')">
+                        titolo obbligatorio.
+                    </p>
+                </div>
+                <div class="form-group my-3">
+                    <label for="competenze">Inserisci competenze</label>
+                    <input type="text" class="form-control" id="competenze" aria-describedby="competenze"
+                        name="competenze" placeholder="Inserisci competenze" formControlName="competenze">
+                    <p class="text-danger" *ngIf="this.form.controls.competenze.touched &&
+                        this.form.controls.competenze.hasError('required')">
+                        Cognocompetenze obbligatorie.
+                    </p>
+                </div>
+                <div class="form-group my-3">
+                    <label for="istruzione">Inserisci livello di isruzione istruzione</label>
+                    <input type="text" class="form-control" id="istruzione" aria-describedby="istruzione"
+                        name="istruzione" placeholder="Inserisci il tuo livello di istruzione"
+                        formControlName="istruzione">
+                    <p class="text-danger" *ngIf="this.form.controls.istruzione.touched &&
+                        this.form.controls.istruzione.hasError('required')">
+                        Inserisci una breve descrizione riguardo il tuo livello di istruzione.
+                    </p>
+
+                </div>
+                <div class="form-group my-3">
+                    <label for="esperienzePrecedenti">esperienze lavorative precedenti</label>
+                    <input type="text" class="form-control" id="esperienzePrecedenti"
+                        placeholder="Inserisci le tue esperienze lavorative Precedenti" name="esperienzePrecedenti"
+                        formControlName="esperienzePrecedenti">
+                    <p class="text-danger" *ngIf="this.form.controls.esperienzePrecedenti.touched &&
+                        this.form.controls.esperienzePrecedenti.hasError('required')">
+                        Password obbligatoria.
+                    </p>
+
+                </div>
+                <div class="form-group my-3">
+                    <label for="lingueConosciute">Lingue conosciute</label>
+                    <input type="text" class="form-control" id="lingueConosciute"
+                        placeholder="Inserisci le lingue che conosci" name="lingueConosciute"
+                        formControlName="lingueConosciute">
+
+                    <p class="text-danger" *ngIf="this.form.controls.lingueConosciute.touched && 
+                    this.form.controls.lingueConosciute.hasError('required')">
+                        obbligatorio inserire almeno una lingua.
+                    </p>
+
+                </div>
+
+
+                <div class="form-group my-3">
+                    <label for="telefono">Inserisci una tua descrizione generale</label>
+                    <input type="text" class="form-control" id="descrizioneGenerale"
+                        placeholder="Inserisci una tua descrizione generale" name="descrizioneGenerale"
+                        formControlName="descrizioneGenerale">
+                    <p class="text-danger" *ngIf="this.form.controls.descrizioneGenerale.touched && 
+                    this.form.controls.descrizioneGenerale.hasError('required')">
+                        Descrizione Obbligatoria.
+                    </p>
+
+                </div>
+
+                <button [disabled]="!this.isFormValid()" type="submit" class="btn btn-primary">Invia modifiche</button>
+            </form>
+        </div>
+    </div>
+</div>
