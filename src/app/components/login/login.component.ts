@@ -43,9 +43,9 @@ export class LoginComponent implements AfterViewInit {
       const messaggio = this.subjectService.getMessage();
 
       this.toastService.show(
-        'error',
+        'info',
         messaggio ? messaggio : 'default',
-        'errore redirect',
+        'informazione',
         'toastLogin'
       );
 

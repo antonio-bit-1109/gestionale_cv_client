@@ -10,18 +10,21 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link pointer" aria-current="page">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
+                    <a (click)="this.emitBoolean()" class="nav-link pointer">Features</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                </li>
+
 
             </ul>
         </div>
-        <button class="pointer d-flex align-items-center btn">
+        <div>
+            <p class="m-0">
+                Benvenuto, {{this.nomeUtente?.toLocaleUpperCase()}} ({{this.ruolo}})
+            </p>
+        </div>
+        <button (click)="this.doLogout()" class="pointer d-flex align-items-center btn">
             <i class="pi pi-sign-out ms-1" style="font-size: 1.3rem"></i>
         </button>
     </div>

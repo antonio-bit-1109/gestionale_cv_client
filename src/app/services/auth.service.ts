@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
 import { TOKEN_PAYLOAD } from '../utility/modelResponse/modelResp';
+import { Router } from '@angular/router';
+import { SubjectService } from './subject.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor() {}
+  constructor(private router: Router, private subjectService: SubjectService) {}
 
   public saveInStorage(token: string) {
     if (token && token.length) {
@@ -23,6 +25,8 @@ export class AuthService {
 
   public logout() {
     localStorage.removeItem('token');
+    this.router.navigateByUrl('login');
+    this.subjectService.setMessage('logout effettuato con successo.');
   }
 
   public retriveTokenFromStorage() {
