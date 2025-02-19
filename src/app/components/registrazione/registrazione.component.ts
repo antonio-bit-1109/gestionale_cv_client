@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -14,6 +14,7 @@ import {
   MessageResp,
   ValidationRespError,
 } from '../../utility/modelResponse/modelResp';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-registrazione',
@@ -21,7 +22,9 @@ import {
   templateUrl: './registrazione.component.html',
   styleUrl: './registrazione.component.scss',
 })
-export class RegistrazioneComponent {
+export class RegistrazioneComponent implements OnDestroy {
+  private subscriptions: Subscription | undefined;
+
   public form = new FormGroup(
     {
       nome: new FormControl('', [
@@ -62,6 +65,10 @@ export class RegistrazioneComponent {
     private toastService: ToastService
   ) {}
 
+  ngOnDestroy(): void {
+    this.subscriptions?.unsubscribe();
+  }
+
   public goToLogin() {
     this.router.navigateByUrl('login');
   }
@@ -79,44 +86,54 @@ export class RegistrazioneComponent {
         telefono: this.form.controls.telefono.value,
       };
 
-      this.userService.registerUser(dataRegistration).subscribe({
-        next: (resp: any) => {
-          const response = resp as MessageResp;
-          const cleanResp = response.message
-            .replaceAll('_', ' ')
-            .toLocaleUpperCase();
-          console.log(response.message);
-          this.form.reset();
-          this.toastService.show(
-            'success',
-            cleanResp,
-            'registrazione utente',
-            'toastRegistration'
-          );
-        },
-        error: (err: HttpErrorResponse) => {
-          const errMsg = err.error as ValidationRespError;
-          for (const key in errMsg) {
-            if (errMsg.hasOwnProperty(key)) {
-              const errorMessage = errMsg[key];
+      this.subscriptions = this.userService
+        .registerUser(dataRegistration)
+        .subscribe({
+          next: (resp: any) => {
+            const response = resp as MessageResp;
 
-              this.toastService.show(
-                'error',
-                errorMessage,
-                key.toString(),
-                'toastRegistration'
-              );
+            const cleanResp = response.message
+              .replaceAll('_', ' ')
+              .toLocaleUpperCase();
+            console.log(response.message);
+
+            this.form.reset();
+
+            this.toastService.show(
+              'success',
+              cleanResp,
+              'registrazione utente',
+              'toastRegistration'
+            );
+
+            setTimeout(() => {
+              this.router.navigateByUrl('login');
+            }, 3000);
+          },
+          error: (err: HttpErrorResponse) => {
+            const errMsg = err.error as ValidationRespError;
+
+            for (const key in errMsg) {
+              if (errMsg.hasOwnProperty(key)) {
+                const errorMessage = errMsg[key];
+
+                this.toastService.show(
+                  'error',
+                  errorMessage,
+                  key.toString(),
+                  'toastRegistration'
+                );
+              }
             }
-          }
-        },
-      });
+          },
+        });
       //
     } else {
       //
       this.toastService.show(
         'error',
-        'stai a fa gli impicci, SMETTILA SUBITO!',
-        'DONT DO IT!',
+        'FORM INVALIDO',
+        'form non valido',
         'toastRegistration'
       );
     }
