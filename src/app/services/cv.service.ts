@@ -66,4 +66,12 @@ export class CvService {
       }
     );
   }
+
+  public ricerca_Cv_esperienze(esperienze: string) {
+    return this.http.get(
+      `${
+        environment.BASE_URL + environment.URL_CV
+      }findByEsperienze?esperienze=${esperienze}`
+    );
+  }
 }

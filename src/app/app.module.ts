@@ -27,6 +27,7 @@ import { ModificaCvComponent } from './components/modifica-cv/modifica-cv.compon
 import { CreaCvComponent } from './components/crea-cv/crea-cv.component';
 import { ModalGenericComponent } from './components/modal-generic/modal-generic.component';
 import { ConfermaCancellaCvComponent } from './components/conferma-cancella-cv/conferma-cancella-cv.component';
+import { RicercaCvEsperienzeComponent } from './components/ricerca-cv-esperienze/ricerca-cv-esperienze.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ConfermaCancellaCvComponent } from './components/conferma-cancella-cv/c
     CreaCvComponent,
     ModalGenericComponent,
     ConfermaCancellaCvComponent,
+    RicercaCvEsperienzeComponent,
   ],
   imports: [
     BrowserModule,

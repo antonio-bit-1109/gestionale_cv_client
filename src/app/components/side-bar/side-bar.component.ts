@@ -19,4 +19,8 @@ export class SideBarComponent {
   public goToCreaCv() {
     this.router.navigateByUrl('/home/crea-cv');
   }
+
+  public goToricercaEsperienza() {
+    this.router.navigateByUrl('/home/ricerca-esperienze');
+  }
 }

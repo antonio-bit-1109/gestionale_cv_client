@@ -1,0 +1,26 @@
+<div class="container-fluid min-vh-100 sfondo">
+    <div class="row w-100 justify-content-center p-4">
+        <div class="col-12">
+            <h2 class="text-center">Inserisci esperienze da ricercare</h2>
+        </div>
+        <div class="col-12 col-md-8 col-lg-6">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="esperienze" aria-describedby="esperienze"
+                        placeholder="inserisci esperienze da cercare" required formControlName="esperienze">
+
+                </div>
+                <button [disabled]="!this.isFormValid()" type="submit" class="btn btn-primary mt-2">Ricerca
+                    curriculum</button>
+            </form>
+        </div>
+    </div>
+
+    <hr class="my-5">
+    <!-- i curriculum risultanti dalla ricerca verranno mostrati qui sotto -->
+    <div class="row">
+        <div class="col-12">
+
+        </div>
+    </div>
+</div>
