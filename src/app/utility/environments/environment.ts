@@ -8,4 +8,5 @@ export const environment = {
   GET_SINGOLO_CV: 'get',
   EDIT_CV: 'edit',
   CREATE_CV: 'create',
+  DELETE_CV: 'delete',
 };

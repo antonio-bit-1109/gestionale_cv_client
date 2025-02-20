@@ -1,6 +1,11 @@
 <div>
-    stai per cancellare questo curriculum.
-    sei sicuro ?
-    <button>si</button>
-    <button (click)="this.nascondiModale()">no</button>
+    <h3>Cancellazione curriculum</h3>
+    <p> <strong>Titolo:</strong> {{this.titoloCv | uppercase}}</p>
+    <p> <strong>Data creazione:</strong> {{this.dataCreazioneCv | date}}</p>
+    <p> <strong>sei sicuro?</strong></p>
+    <div class="d-flex gap-1">
+        <button (click)="this.cancellaCv()" class="btn btn-primary">SI</button>
+        <button class="btn btn-danger" (click)="this.nascondiModale()">NO</button>
+    </div>
+
 </div>

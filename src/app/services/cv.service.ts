@@ -52,6 +52,17 @@ export class CvService {
         istruzione: dataCv.istruzione,
         esperienzePrecedenti: dataCv.esperienzePrecedenti,
         lingueConosciute: dataCv.lingueConosciute,
+        descrizioneGenerale: dataCv.descrizioneGenerale,
+      }
+    );
+  }
+
+  public deleteCv(id_utente: string, id_cv: number) {
+    return this.http.post(
+      `${environment.BASE_URL + environment.URL_CV + environment.DELETE_CV}`,
+      {
+        id_utente: Number(id_utente),
+        id_cv: Number(id_cv),
       }
     );
   }
