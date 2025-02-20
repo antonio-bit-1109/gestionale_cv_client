@@ -11,6 +11,7 @@ import { CvService } from '../../services/cv.service';
 import { Icv, IRespSingoloCv } from '../../utility/modelResponse/modelResp';
 import { HttpErrorResponse } from '@angular/common/http';
 import { IEditCv } from '../../utility/modelRequests/modelReq';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-modifica-cv',
@@ -26,7 +27,8 @@ export class ModificaCvComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private authService: AuthService,
-    private cvService: CvService
+    private cvService: CvService,
+    private toastService: ToastService
   ) {}
 
   public form = new FormGroup({
@@ -89,12 +91,18 @@ export class ModificaCvComponent implements OnInit {
       };
 
       this.cvService.editCv(dataCV).subscribe({
-        next: (res) => {
-          console.log(res);
+        next: (res: { message: string }) => {
+          // console.log(res);
+
+          this.toastService.show(
+            'success',
+            res.message,
+            'modifica cv',
+            'toastEditCv',
+            2000
+          );
         },
-        error: (err: HttpErrorResponse) => {
-          console.error(err.error);
-        },
+        error: (err: HttpErrorResponse) => {},
       });
     }
   }

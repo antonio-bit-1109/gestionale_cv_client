@@ -1,4 +1,5 @@
 import { Component, Input, input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-bar',
@@ -8,4 +9,10 @@ import { Component, Input, input } from '@angular/core';
 })
 export class SideBarComponent {
   @Input() sidebarVisible: boolean = false;
+
+  constructor(private router: Router) {}
+
+  public goToGetAllCv() {
+    this.router.navigateByUrl('home');
+  }
 }

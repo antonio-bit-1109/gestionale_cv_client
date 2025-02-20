@@ -28,12 +28,10 @@ export class CvService {
 
   public editCv(cvData: IEditCv) {
     return this.http.post(
-      `${
-        environment.BASE_URL + environment.URL_CV + environment.GET_SINGOLO_CV
-      }`,
+      `${environment.BASE_URL + environment.URL_CV + environment.EDIT_CV}`,
       {
-        id_utente: cvData.idUtente,
-        id_cv: cvData.idCv,
+        idUtente: cvData.idUtente,
+        idCv: cvData.idCv,
         titolo: cvData.titolo,
         competenze: cvData.competenze,
         istruzione: cvData.istruzione,
