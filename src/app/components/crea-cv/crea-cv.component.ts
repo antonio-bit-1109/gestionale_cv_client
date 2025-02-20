@@ -4,6 +4,7 @@ import { CvService } from '../../services/cv.service';
 import { AuthService } from '../../services/auth.service';
 import { IEdit_Create_Cv } from '../../utility/modelRequests/modelReq';
 import { ToastService } from '../../services/toast.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crea-cv',
@@ -26,7 +27,8 @@ export class CreaCvComponent implements OnInit {
   constructor(
     private cvService: CvService,
     private authService: AuthService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private router: Router
   ) {
     if (this.authService.isUserLoggedIn()) {
       this.id_utente = this.authService.getIdUser();
@@ -58,6 +60,10 @@ export class CreaCvComponent implements OnInit {
             'creazione cv',
             'toastCreaCv'
           );
+
+          setTimeout(() => {
+            this.router.navigateByUrl('/home');
+          }, 2000);
         },
         error: (err) => {
           console.log(err);
