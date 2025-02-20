@@ -1,0 +1,72 @@
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CvService } from '../../services/cv.service';
+import { AuthService } from '../../services/auth.service';
+import { IEdit_Create_Cv } from '../../utility/modelRequests/modelReq';
+import { ToastService } from '../../services/toast.service';
+
+@Component({
+  selector: 'app-crea-cv',
+  standalone: false,
+  templateUrl: './crea-cv.component.html',
+  styleUrl: './crea-cv.component.scss',
+})
+export class CreaCvComponent implements OnInit {
+  public form = new FormGroup({
+    titolo: new FormControl('', [Validators.required]),
+    competenze: new FormControl('', [Validators.required]),
+    istruzione: new FormControl('', [Validators.required]),
+    esperienzePrecedenti: new FormControl('', [Validators.required]),
+    lingueConosciute: new FormControl('', [Validators.required]),
+    descrizioneGenerale: new FormControl('', [Validators.required]),
+  });
+
+  public id_utente: string | undefined;
+
+  constructor(
+    private cvService: CvService,
+    private authService: AuthService,
+    private toastService: ToastService
+  ) {
+    if (this.authService.isUserLoggedIn()) {
+      this.id_utente = this.authService.getIdUser();
+    }
+  }
+
+  ngOnInit(): void {}
+
+  public onSubmit() {
+    console.log(this.form.value);
+
+    if (this.isFormValid()) {
+      const dataCreazCv: IEdit_Create_Cv = {
+        competenze: this.form.controls.competenze.value,
+        descrizioneGenerale: this.form.controls.descrizioneGenerale.value,
+        esperienzePrecedenti: this.form.controls.esperienzePrecedenti.value,
+        idUtente: parseInt(this.id_utente),
+        istruzione: this.form.controls.istruzione.value,
+        lingueConosciute: this.form.controls.lingueConosciute.value,
+        titolo: this.form.controls.titolo.value,
+      };
+
+      this.cvService.createCv(dataCreazCv).subscribe({
+        next: (resp: { message: string }) => {
+          console.log(resp);
+          this.toastService.show(
+            'success',
+            resp.message,
+            'creazione cv',
+            'toastCreaCv'
+          );
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+    }
+  }
+
+  public isFormValid() {
+    return this.form.valid;
+  }
+}

@@ -18,7 +18,7 @@ import { SubjectService } from '../../services/subject.service';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
-export class LoginComponent implements AfterViewInit {
+export class LoginComponent implements AfterViewInit, OnInit {
   public form = new FormGroup({
     email: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
@@ -31,6 +31,12 @@ export class LoginComponent implements AfterViewInit {
     private authService: AuthService,
     private subjectService: SubjectService
   ) {}
+
+  ngOnInit(): void {
+    if (this.authService.isUserLoggedIn()) {
+      this.router.navigateByUrl('/home');
+    }
+  }
 
   // se accedo alla pagina di login tramite redirect effettuato dalla guardia ,
   //  notifico l'utente che ce stato un problema ,

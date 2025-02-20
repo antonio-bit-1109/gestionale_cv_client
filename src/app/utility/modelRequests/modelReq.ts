@@ -12,8 +12,8 @@ export interface IGetSIngolo_cv {
   id_cv: number;
 }
 
-export interface IEditCv {
-  idCv: number;
+export interface IEdit_Create_Cv {
+  idCv?: number;
   idUtente: number;
   titolo: string;
   competenze: string;

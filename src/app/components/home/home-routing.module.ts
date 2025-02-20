@@ -5,6 +5,7 @@ import { HomePageComponent } from '../../home-page/home-page.component';
 import { loginGuard } from '../../guards/login.guard';
 import { GetAllCvUserComponent } from '../get-all-cv-user/get-all-cv-user.component';
 import { ModificaCvComponent } from '../modifica-cv/modifica-cv.component';
+import { CreaCvComponent } from '../crea-cv/crea-cv.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,7 @@ const routes: Routes = [
     children: [
       { path: '', component: GetAllCvUserComponent, canActivate: [loginGuard] },
       { path: 'modifica-cv/:id_cv', component: ModificaCvComponent },
+      { path: 'crea-cv', component: CreaCvComponent },
       { path: '**', redirectTo: '' },
     ],
   },

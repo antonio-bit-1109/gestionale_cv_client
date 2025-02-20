@@ -5,12 +5,12 @@ import {
   FormsModule,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { CvService } from '../../services/cv.service';
 import { Icv, IRespSingoloCv } from '../../utility/modelResponse/modelResp';
 import { HttpErrorResponse } from '@angular/common/http';
-import { IEditCv } from '../../utility/modelRequests/modelReq';
+import { IEdit_Create_Cv } from '../../utility/modelRequests/modelReq';
 import { ToastService } from '../../services/toast.service';
 
 @Component({
@@ -28,7 +28,8 @@ export class ModificaCvComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private authService: AuthService,
     private cvService: CvService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private router: Router
   ) {}
 
   public form = new FormGroup({
@@ -79,7 +80,7 @@ export class ModificaCvComponent implements OnInit {
 
   public onSubmit() {
     if (this.isFormValid()) {
-      const dataCV: IEditCv = {
+      const dataCV: IEdit_Create_Cv = {
         competenze: this.form.controls.competenze.value,
         descrizioneGenerale: this.form.controls.descrizioneGenerale.value,
         esperienzePrecedenti: this.form.controls.esperienzePrecedenti.value,
@@ -101,6 +102,10 @@ export class ModificaCvComponent implements OnInit {
             'toastEditCv',
             2000
           );
+
+          setTimeout(() => {
+            this.router.navigateByUrl('home');
+          }, 2000);
         },
         error: (err: HttpErrorResponse) => {},
       });

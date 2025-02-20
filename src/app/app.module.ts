@@ -23,6 +23,7 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { tokenRequestInterceptor } from './interceptors/send-token-request.interceptor';
 import { GetAllCvUserComponent } from './components/get-all-cv-user/get-all-cv-user.component';
 import { ModificaCvComponent } from './components/modifica-cv/modifica-cv.component';
+import { CreaCvComponent } from './components/crea-cv/crea-cv.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ModificaCvComponent } from './components/modifica-cv/modifica-cv.compon
     SideBarComponent,
     GetAllCvUserComponent,
     ModificaCvComponent,
+    CreaCvComponent,
   ],
   imports: [
     BrowserModule,

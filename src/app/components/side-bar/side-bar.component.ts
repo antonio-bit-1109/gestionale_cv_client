@@ -15,4 +15,8 @@ export class SideBarComponent {
   public goToGetAllCv() {
     this.router.navigateByUrl('home');
   }
+
+  public goToCreaCv() {
+    this.router.navigateByUrl('/home/crea-cv');
+  }
 }

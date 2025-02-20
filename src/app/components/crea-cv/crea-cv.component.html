@@ -1,12 +1,12 @@
 <div class="container-fluid sfondo min-vh-100">
 
-    <p-toast key="toastEditCv" />
+    <p-toast key="toastCreaCv" />
 
     <div class="row justify-content-center align-items-center min-vh-100">
         <div class="col-11 col-md-8 col-lg-6">
             <form [formGroup]="form" (ngSubmit)="onSubmit()" class=" border-black p-5 rounded-5 shadow mb-4 mt-4">
                 <div>
-                    <h2>Modifica dati Curriculum</h2>
+                    <h2>Crea il tuo Curriculum</h2>
                 </div>
 
                 <div class="form-group my-3">
@@ -25,7 +25,7 @@
                         name="competenze" placeholder="Inserisci competenze" formControlName="competenze">
                     <p class="text-danger" *ngIf="this.form.controls.competenze.touched &&
                         this.form.controls.competenze.hasError('required')">
-                        Cognocompetenze obbligatorie.
+                        competenze obbligatorie.
                     </p>
                 </div>
                 <div class="form-group my-3">

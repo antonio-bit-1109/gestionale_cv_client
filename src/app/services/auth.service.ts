@@ -20,7 +20,7 @@ export class AuthService {
   }
 
   public isUserLoggedIn() {
-    return localStorage.getItem('token');
+    return localStorage.getItem('token') !== null;
   }
 
   public logout() {

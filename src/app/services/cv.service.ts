@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../utility/environments/environment';
-import { IEditCv } from '../utility/modelRequests/modelReq';
+import { IEdit_Create_Cv } from '../utility/modelRequests/modelReq';
 
 @Injectable({
   providedIn: 'root',
@@ -26,7 +26,7 @@ export class CvService {
     );
   }
 
-  public editCv(cvData: IEditCv) {
+  public editCv(cvData: IEdit_Create_Cv) {
     return this.http.post(
       `${environment.BASE_URL + environment.URL_CV + environment.EDIT_CV}`,
       {
@@ -38,6 +38,20 @@ export class CvService {
         esperienzePrecedenti: cvData.esperienzePrecedenti,
         lingueConosciute: cvData.lingueConosciute,
         descrizioneGenerale: cvData.descrizioneGenerale,
+      }
+    );
+  }
+
+  public createCv(dataCv: IEdit_Create_Cv) {
+    return this.http.post(
+      `${environment.BASE_URL + environment.URL_CV + environment.CREATE_CV}`,
+      {
+        idUtente: dataCv.idUtente,
+        titolo: dataCv.titolo,
+        competenze: dataCv.competenze,
+        istruzione: dataCv.istruzione,
+        esperienzePrecedenti: dataCv.esperienzePrecedenti,
+        lingueConosciute: dataCv.lingueConosciute,
       }
     );
   }
