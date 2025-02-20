@@ -57,6 +57,23 @@ body {
   border: 2px solid $color-3 !important;
 }
 
+.btn-danger {
+  border-radius: 10px !important;
+  background-color: $color-red !important;
+  color: white !important;
+  border: 2px solid $color-red !important;
+  font-weight: 600;
+  transition: background-color 0.2s ease-in-out, color 0.5s ease-in-out,
+    border 0.3s ease-in-out;
+}
+
+.btn-danger:hover {
+  background-color: white !important;
+  font-weight: 600;
+  color: $color-red !important;
+  border: 2px solid $color-red !important;
+}
+
 .scale:hover {
   scale: 1.1;
 }
