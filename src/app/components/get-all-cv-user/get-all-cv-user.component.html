@@ -40,11 +40,10 @@
                                     <button (click)="this.goToModificaCv(cv.id_cv)" class="btn btn-primary">
                                         <i class="pi pi-file-edit" style="font-size: 1rem"></i>
                                     </button>
-                                    <button class="btn btn-danger">
+                                    <button (click)="this.showModal()" class="btn btn-danger">
                                         <i class="pi pi-trash" style="font-size: 1rem"></i>
                                     </button>
                                 </div>
-
                             </div>
                         </div>
 
@@ -52,6 +51,12 @@
                     </div>
                 </div>
             </ng-container>
+
+            <!-- modale utilizzato per la conferma cancellazione del cv  -->
+
+            <app-modal-generic [visible]="this.mostraModale">
+                <app-conferma-cancella-cv (nascondi)="prendiValoreNascondi($event)"></app-conferma-cancella-cv>
+            </app-modal-generic>
 
         </div>
     </div>

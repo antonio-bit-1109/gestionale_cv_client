@@ -19,7 +19,7 @@ import { SubjectService } from '../../services/subject.service';
 })
 export class GetAllCvUserComponent {
   public AllCvList: IRespListaCV | undefined;
-
+  public mostraModale = false;
   constructor(
     private cvService: CvService,
     private authService: AuthService,
@@ -76,5 +76,13 @@ export class GetAllCvUserComponent {
 
   public goToModificaCv(id_cv: number) {
     this.router.navigateByUrl(`/home/modifica-cv/${id_cv}`);
+  }
+
+  public showModal() {
+    this.mostraModale = true;
+  }
+
+  public prendiValoreNascondi(event) {
+    this.mostraModale = event;
   }
 }

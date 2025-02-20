@@ -11,6 +11,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ToastModule } from 'primeng/toast';
 import { FormsModule } from '@angular/forms';
 import { SidebarModule } from 'primeng/sidebar';
+import { DialogModule } from 'primeng/dialog';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -24,6 +25,8 @@ import { tokenRequestInterceptor } from './interceptors/send-token-request.inter
 import { GetAllCvUserComponent } from './components/get-all-cv-user/get-all-cv-user.component';
 import { ModificaCvComponent } from './components/modifica-cv/modifica-cv.component';
 import { CreaCvComponent } from './components/crea-cv/crea-cv.component';
+import { ModalGenericComponent } from './components/modal-generic/modal-generic.component';
+import { ConfermaCancellaCvComponent } from './components/conferma-cancella-cv/conferma-cancella-cv.component';
 
 @NgModule({
   declarations: [
@@ -37,10 +40,13 @@ import { CreaCvComponent } from './components/crea-cv/crea-cv.component';
     GetAllCvUserComponent,
     ModificaCvComponent,
     CreaCvComponent,
+    ModalGenericComponent,
+    ConfermaCancellaCvComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    DialogModule,
     SidebarModule,
     DividerModule,
     HttpClientModule,
