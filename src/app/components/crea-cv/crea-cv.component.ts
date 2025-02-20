@@ -5,6 +5,8 @@ import { AuthService } from '../../services/auth.service';
 import { IEdit_Create_Cv } from '../../utility/modelRequests/modelReq';
 import { ToastService } from '../../services/toast.service';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ValidationRespError } from '../../utility/modelResponse/modelResp';
 
 @Component({
   selector: 'app-crea-cv',
@@ -65,8 +67,27 @@ export class CreaCvComponent implements OnInit {
             this.router.navigateByUrl('/home');
           }, 2000);
         },
-        error: (err) => {
+        error: (err: HttpErrorResponse) => {
           console.log(err);
+
+          const errMsg = err.error as ValidationRespError;
+          for (const key in errMsg) {
+            if (errMsg.hasOwnProperty(key)) {
+              const errorMessage = errMsg[key];
+
+              if (!errorMessage) {
+                continue;
+              }
+
+              this.toastService.show(
+                'error',
+                errorMessage,
+                key.toString(),
+                'toastCreaCv',
+                3500
+              );
+            }
+          }
         },
       });
     }

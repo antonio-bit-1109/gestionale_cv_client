@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SubjectService {
   public messaggio = new BehaviorSubject<string | null>(null);
-
+  public invitaCreazioneCv = new BehaviorSubject<true | null>(null);
   constructor() {}
 
   public setMessage(msg: string) {
@@ -19,5 +19,18 @@ export class SubjectService {
 
   public clearMessage() {
     this.messaggio.next(null);
+  }
+
+  //-----------------------------------------------------------//
+
+  public InvitaCreazioneOn() {
+    this.invitaCreazioneCv.next(true);
+  }
+
+  public InvitaCreazioneOff() {
+    this.invitaCreazioneCv.next(null);
+  }
+  public getInvitoCreazione() {
+    return this.invitaCreazioneCv.asObservable();
   }
 }

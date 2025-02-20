@@ -12,7 +12,7 @@
                 <li class="nav-item">
                     <a class="nav-link pointer" aria-current="page" (click)="this.goHome()">Home</a>
                 </li>
-                <li class="nav-item">
+                <li [ngClass]="{'heartbeat' : this.invitoAttivo}" class="nav-item">
                     <a (click)="this.emitBoolean()" class="nav-link pointer">Features</a>
                 </li>
 
