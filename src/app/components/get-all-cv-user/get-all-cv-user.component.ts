@@ -85,6 +85,10 @@ export class GetAllCvUserComponent {
     this.router.navigateByUrl(`/home/modifica-cv/${id_cv}`);
   }
 
+  public goToVisualizzaCv(id_cv: number) {
+    this.router.navigateByUrl(`/home/visualizza-cv/${id_cv}`);
+  }
+
   public showModal(cv: Icv) {
     this.mostraModale = true;
     this.dataCreazioneCvSelected = cv.created_at;

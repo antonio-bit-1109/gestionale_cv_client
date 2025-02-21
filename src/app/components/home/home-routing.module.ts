@@ -8,6 +8,7 @@ import { ModificaCvComponent } from '../modifica-cv/modifica-cv.component';
 import { CreaCvComponent } from '../crea-cv/crea-cv.component';
 import { RicercaCvEsperienzeComponent } from '../ricerca-cv-esperienze/ricerca-cv-esperienze.component';
 import { RicercaCvCompetenzaComponent } from '../ricerca-cv-competenza/ricerca-cv-competenza.component';
+import { VisualizzaCvComponent } from '../visualizza-cv/visualizza-cv.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,8 @@ const routes: Routes = [
       { path: 'crea-cv', component: CreaCvComponent },
       { path: 'ricerca-esperienze', component: RicercaCvEsperienzeComponent },
       { path: 'ricerca-competenza', component: RicercaCvCompetenzaComponent },
+      { path: 'visualizza-cv/:id_cv', component: VisualizzaCvComponent },
+
       { path: '**', redirectTo: '' },
     ],
   },

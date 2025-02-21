@@ -30,6 +30,7 @@ import { ConfermaCancellaCvComponent } from './components/conferma-cancella-cv/c
 import { RicercaCvEsperienzeComponent } from './components/ricerca-cv-esperienze/ricerca-cv-esperienze.component';
 import { OrizontalCardComponent } from './components/shared/orizontal-card/orizontal-card.component';
 import { RicercaCvCompetenzaComponent } from './components/ricerca-cv-competenza/ricerca-cv-competenza.component';
+import { VisualizzaCvComponent } from './components/visualizza-cv/visualizza-cv.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { RicercaCvCompetenzaComponent } from './components/ricerca-cv-competenza
     RicercaCvEsperienzeComponent,
     OrizontalCardComponent,
     RicercaCvCompetenzaComponent,
+    VisualizzaCvComponent,
   ],
   imports: [
     BrowserModule,

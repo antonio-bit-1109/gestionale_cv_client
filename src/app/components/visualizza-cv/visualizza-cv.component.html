@@ -1,0 +1,43 @@
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+            <div class="card shadow-sm">
+                <div class="card-header header-color text-white">
+                    <h3 class="card-title mb-0">{{ cv?.titolo }}</h3>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-subtitle mb-3">Informazioni Generali</h5>
+                    <p class="mb-1"><strong>nome:</strong> {{ this.prendiNome(cv?.proprietarioCV) }}</p>
+                    <p class="mb-1"><strong>cognome:</strong> {{ this.prendiCognome(cv?.proprietarioCV) }}</p>
+                    <!-- <p class="mb-1"><strong>Email:</strong> {{ cv.email }}</p>
+                    <p class="mb-1"><strong>Telefono:</strong> {{ cv.telefono }}</p> -->
+
+                    <hr>
+
+                    <h5 class="card-subtitle mb-3">Esperienze Precedenti</h5>
+                    <p class="mb-1">{{ cv?.esperienze_Precedenti }}</p>
+
+                    <hr>
+
+                    <h5 class="card-subtitle mb-3">Competenze</h5>
+                    <p class="mb-1">{{ cv?.competenze }}</p>
+
+                    <hr>
+
+                    <h5 class="card-subtitle mb-3">Istruzione</h5>
+                    <p class="mb-1">{{ cv?.istruzione }}</p>
+
+                    <hr>
+
+                    <h5 class="card-subtitle mb-3">Lingue Conosciute</h5>
+                    <p class="mb-1">{{ cv?.lingueConosciute }}</p>
+
+                    <hr>
+
+                    <h5 class="card-subtitle mb-3">Descrizione Generale</h5>
+                    <p class="mb-1">{{ cv?.descrizioneGenerale }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

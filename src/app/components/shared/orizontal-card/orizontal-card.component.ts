@@ -17,4 +17,8 @@ export class OrizontalCardComponent {
   public goToModificaCv(id_cv: number) {
     this.router.navigateByUrl(`/home/modifica-cv/${id_cv}`);
   }
+
+  public goToVisualizzaCv(id_cv: number) {
+    this.router.navigateByUrl(`/home/visualizza-cv/${id_cv}`);
+  }
 }
