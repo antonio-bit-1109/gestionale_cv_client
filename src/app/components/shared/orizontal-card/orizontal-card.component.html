@@ -1,0 +1,31 @@
+<div class="card mb-3">
+    <div class="d-flex align-items-center">
+        <div class="col-md-3">
+            <div class="d-flex justify-content-center ms-2">
+                <div class="rounded-4 border border-2 border-black">
+                    <i class="pi pi-file-word p-1" style="font-size: 2rem"></i>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <div class="card-body">
+                <h5 class="card-title">{{ cv.titolo }}</h5>
+                <p class="card-text"><strong>Esperienze:</strong> {{ cv.esperienze_Precedenti }}</p>
+                <p class="card-text"><strong>Competenze:</strong> {{ cv.competenze }}</p>
+                <p class="card-text"><strong>Istruzione:</strong> {{ cv.istruzione }}</p>
+                <p class="card-text"><strong>Lingue:</strong> {{ cv.lingueConosciute }}</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="d-flex flex-column gap-1 my-3 p-3">
+                <button (click)="this.scaricaPdf(cv)" class="btn btn-primary">
+                    <i class="pi pi-download" style="font-size: 1rem"></i>
+                </button>
+                <button (click)="this.goToModificaCv(cv.id_cv)" class="btn btn-primary">
+                    <i class="pi pi-file-edit" style="font-size: 1rem"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

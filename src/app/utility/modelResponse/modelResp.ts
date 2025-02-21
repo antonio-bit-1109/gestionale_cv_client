@@ -43,15 +43,20 @@ export interface IRespSingoloCv {
   message: string | null;
 }
 
-export interface ICv {
-  titolo: string;
-  esperienze_Precedenti: string;
-  competenze: string;
-  istruzione: string;
-  lingueConosciute: string;
-  descrizioneGenerale: string;
-  created_at: Date;
-  updated_at: Date | null;
-  proprietarioCV: string;
-  path_file_System_pdf: string;
+// export interface ICv {
+//   titolo: string;
+//   esperienze_Precedenti: string;
+//   competenze: string;
+//   istruzione: string;
+//   lingueConosciute: string;
+//   descrizioneGenerale: string;
+//   created_at: Date;
+//   updated_at: Date | null;
+//   proprietarioCV: string;
+//   path_file_System_pdf: string;
+// }
+
+export interface IRespListaCv {
+  listaCV: Icv[];
+  message: string | null;
 }

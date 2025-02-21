@@ -28,6 +28,8 @@ import { CreaCvComponent } from './components/crea-cv/crea-cv.component';
 import { ModalGenericComponent } from './components/modal-generic/modal-generic.component';
 import { ConfermaCancellaCvComponent } from './components/conferma-cancella-cv/conferma-cancella-cv.component';
 import { RicercaCvEsperienzeComponent } from './components/ricerca-cv-esperienze/ricerca-cv-esperienze.component';
+import { OrizontalCardComponent } from './components/shared/orizontal-card/orizontal-card.component';
+import { RicercaCvCompetenzaComponent } from './components/ricerca-cv-competenza/ricerca-cv-competenza.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { RicercaCvEsperienzeComponent } from './components/ricerca-cv-esperienze
     ModalGenericComponent,
     ConfermaCancellaCvComponent,
     RicercaCvEsperienzeComponent,
+    OrizontalCardComponent,
+    RicercaCvCompetenzaComponent,
   ],
   imports: [
     BrowserModule,

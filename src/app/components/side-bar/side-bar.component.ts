@@ -23,4 +23,8 @@ export class SideBarComponent {
   public goToricercaEsperienza() {
     this.router.navigateByUrl('/home/ricerca-esperienze');
   }
+
+  public gotoRicercaCompetenza() {
+    this.router.navigateByUrl('/home/ricerca-competenza');
+  }
 }
