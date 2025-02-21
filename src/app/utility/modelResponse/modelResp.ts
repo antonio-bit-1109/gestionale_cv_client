@@ -36,6 +36,8 @@ export interface Icv {
   updated_at: Date;
   proprietarioCV: string;
   Path_file_System_pdf: string;
+  email: string;
+  telefono: string;
 }
 
 export interface IRespSingoloCv {
