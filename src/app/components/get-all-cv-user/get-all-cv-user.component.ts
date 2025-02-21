@@ -79,7 +79,9 @@ export class GetAllCvUserComponent {
     });
   }
 
-  public scaricaPdf(cv: Icv) {}
+  public scaricaPdf(cv: Icv) {
+    this.cvService.downloadFile(cv.id_cv, cv.proprietarioCV);
+  }
 
   public goToModificaCv(id_cv: number) {
     this.router.navigateByUrl(`/home/modifica-cv/${id_cv}`);

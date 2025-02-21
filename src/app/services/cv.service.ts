@@ -82,4 +82,29 @@ export class CvService {
       }findByCompetenza?competenza=${competenze}`
     );
   }
+
+  public downloadFile(id_cv: number, nomeProprietario: string) {
+    return this.http
+      .get(
+        `${
+          environment.BASE_URL + environment.URL_CV
+        }downloadPDF?id_cv=${id_cv}`,
+        { responseType: 'blob' }
+        //
+      )
+      .subscribe({
+        //
+        next: (blob) => {
+          const url = window.URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = `cv_${nomeProprietario}.pdf`;
+          link.click();
+          window.URL.revokeObjectURL(url);
+        },
+        error: (err) => {
+          console.error('Errore durante il download del file', err);
+        },
+      });
+  }
 }
