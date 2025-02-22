@@ -27,4 +27,8 @@ export class SideBarComponent {
   public gotoRicercaCompetenza() {
     this.router.navigateByUrl('/home/ricerca-competenza');
   }
+
+  public goToCaricaCvAdmin() {
+    this.router.navigateByUrl('/home/carica-cv-admin');
+  }
 }

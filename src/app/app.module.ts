@@ -12,6 +12,8 @@ import { ToastModule } from 'primeng/toast';
 import { FormsModule } from '@angular/forms';
 import { SidebarModule } from 'primeng/sidebar';
 import { DialogModule } from 'primeng/dialog';
+import { FileUploadModule } from 'primeng/fileupload';
+import { BadgeModule } from 'primeng/badge';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -31,6 +33,7 @@ import { RicercaCvEsperienzeComponent } from './components/ricerca-cv-esperienze
 import { OrizontalCardComponent } from './components/shared/orizontal-card/orizontal-card.component';
 import { RicercaCvCompetenzaComponent } from './components/ricerca-cv-competenza/ricerca-cv-competenza.component';
 import { VisualizzaCvComponent } from './components/visualizza-cv/visualizza-cv.component';
+import { CaricaCvAdminComponent } from './components/carica-cv-admin/carica-cv-admin.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +53,7 @@ import { VisualizzaCvComponent } from './components/visualizza-cv/visualizza-cv.
     OrizontalCardComponent,
     RicercaCvCompetenzaComponent,
     VisualizzaCvComponent,
+    CaricaCvAdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +65,8 @@ import { VisualizzaCvComponent } from './components/visualizza-cv/visualizza-cv.
     NgbModule,
     ButtonModule,
     BrowserAnimationsModule,
+    FileUploadModule,
+    BadgeModule,
     FormsModule,
     ToastModule,
     MenubarModule,
