@@ -45,18 +45,21 @@ export interface IRespSingoloCv {
   message: string | null;
 }
 
-// export interface ICv {
-//   titolo: string;
-//   esperienze_Precedenti: string;
-//   competenze: string;
-//   istruzione: string;
-//   lingueConosciute: string;
-//   descrizioneGenerale: string;
-//   created_at: Date;
-//   updated_at: Date | null;
-//   proprietarioCV: string;
-//   path_file_System_pdf: string;
-// }
+export interface IUser {
+  id_utente: number;
+  nome: string;
+  cognome: string;
+  email: string;
+  imgProfilo: string;
+  telefono: string;
+  ruolo: string;
+  isActive: boolean;
+}
+
+export interface IGetAllUsers {
+  msg: string | null;
+  listaUtenti: IUser[];
+}
 
 export interface IRespListaCv {
   listaCV: Icv[];

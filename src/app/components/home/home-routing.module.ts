@@ -10,6 +10,7 @@ import { RicercaCvEsperienzeComponent } from '../ricerca-cv-esperienze/ricerca-c
 import { RicercaCvCompetenzaComponent } from '../ricerca-cv-competenza/ricerca-cv-competenza.component';
 import { VisualizzaCvComponent } from '../visualizza-cv/visualizza-cv.component';
 import { CaricaCvAdminComponent } from '../carica-cv-admin/carica-cv-admin.component';
+import { isAdminGuard } from '../../guards/is-admin.guard';
 
 const routes: Routes = [
   {
@@ -22,7 +23,11 @@ const routes: Routes = [
       { path: 'ricerca-esperienze', component: RicercaCvEsperienzeComponent },
       { path: 'ricerca-competenza', component: RicercaCvCompetenzaComponent },
       { path: 'visualizza-cv/:id_cv', component: VisualizzaCvComponent },
-      { path: 'carica-cv-admin', component: CaricaCvAdminComponent },
+      {
+        path: 'carica-cv-admin',
+        component: CaricaCvAdminComponent,
+        canActivate: [isAdminGuard],
+      },
 
       { path: '**', redirectTo: '' },
     ],

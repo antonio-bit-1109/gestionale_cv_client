@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { UserService } from '../../services/user.service';
+import { filter, map, Observable, take } from 'rxjs';
+import { IGetAllUsers, IUser } from '../../utility/modelResponse/modelResp';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-carica-cv-admin',
@@ -15,6 +18,8 @@ export class CaricaCvAdminComponent implements OnInit {
 
   totalSizePercent: number = 0;
 
+  listaUtenti: IUser[] | undefined;
+
   constructor(
     private config: PrimeNGConfig,
     private messageService: MessageService,
@@ -22,7 +27,22 @@ export class CaricaCvAdminComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // fai la get di tutti gli utenti
+    this.userService
+      .getAllUsers()
+      .pipe(
+        take(1),
+        map((resp: IGetAllUsers) =>
+          resp.listaUtenti.filter((user) => user.ruolo === 'USER')
+        )
+      )
+      .subscribe({
+        next: (resp) => {
+          console.log(resp);
+        },
+        error: (err: HttpErrorResponse) => {
+          console.error(err.error);
+        },
+      });
   }
 
   public uploadDataToServer() {
