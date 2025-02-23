@@ -32,12 +32,10 @@ export class UserService {
     );
   }
 
-  public getAllUsers() {
-    return this.http.get(
+  public getAllUsers(): Observable<IGetAllUsers> {
+    return this.http.get<IGetAllUsers>(
       `${
-        environment.BASE_URL +
-        environment.URL_USER +
-        environment.GET_ALL_CV_USER
+        environment.BASE_URL + environment.URL_USER + environment.GET_ALL_USERS
       }`
     );
   }

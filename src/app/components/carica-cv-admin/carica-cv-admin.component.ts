@@ -19,7 +19,7 @@ export class CaricaCvAdminComponent implements OnInit {
   totalSizePercent: number = 0;
 
   listaUtenti: IUser[] | undefined;
-
+  candidatoSelected: string | undefined;
   constructor(
     private config: PrimeNGConfig,
     private messageService: MessageService,
@@ -32,11 +32,12 @@ export class CaricaCvAdminComponent implements OnInit {
       .pipe(
         take(1),
         map((resp: IGetAllUsers) =>
-          resp.listaUtenti.filter((user) => user.ruolo === 'USER')
+          resp.listaUtenti.filter((user) => user.ruolo !== 'ADMIN')
         )
       )
       .subscribe({
-        next: (resp) => {
+        next: (resp: IUser[]) => {
+          this.listaUtenti = resp;
           console.log(resp);
         },
         error: (err: HttpErrorResponse) => {
@@ -47,6 +48,7 @@ export class CaricaCvAdminComponent implements OnInit {
 
   public uploadDataToServer() {
     console.log('sto inviando robe');
+    console.log(this.candidatoSelected, 'id candidato selezionato');
   }
 
   choose(event, callback) {
@@ -102,5 +104,10 @@ export class CaricaCvAdminComponent implements OnInit {
     const formattedSize = parseFloat((bytes / Math.pow(k, i)).toFixed(dm));
 
     return `${formattedSize} ${sizes[i]}`;
+  }
+
+  public UpperFirstLetter(parola: string) {
+    const parolaLower = parola.toLowerCase();
+    return parolaLower.charAt(0).toUpperCase().concat(parolaLower.slice(1));
   }
 }

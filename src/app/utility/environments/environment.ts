@@ -9,4 +9,5 @@ export const environment = {
   EDIT_CV: 'edit',
   CREATE_CV: 'create',
   DELETE_CV: 'delete',
+  GET_ALL_USERS: 'get/all',
 };

@@ -94,13 +94,14 @@
                         <div class="wrapper p-3">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <label class="input-group-text" for="inputGroupSelect01">Scegli candidato</label>
+                                    <label class="input-group-text" for="listaUtenti">Scegli candidato</label>
                                 </div>
-                                <select class="custom-select w-auto" id="inputGroupSelect01">
+                                <select [(ngModel)]="candidatoSelected" class="custom-select w-auto" id="listaUtenti">
                                     <option selected>Scegli il candidato a cui assegnare il cv</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                    <ng-container *ngFor="let user of this.listaUtenti">
+                                        <option [value]="user.id_utente">{{this.UpperFirstLetter(user.nome)}}
+                                            {{this.UpperFirstLetter(user.cognome)}}</option>
+                                    </ng-container>
                                 </select>
                             </div>
                         </div>
@@ -152,9 +153,20 @@
                                 <input type="email" class="form-control" id="exampleInputEmail1"
                                     aria-describedby="emailHelp" placeholder="Enter email">
                             </div>
+
                         </div>
+
                     </div>
 
+                    <div class="col-md-6 col-lg-6">
+                        <div class="wrapper h-100 d-flex justify-content-center align-items-center p-3">
+                            <button (click)="this.uploadDataToServer()" class="btn btn-primary">
+                                carica CV
+                            </button>
+
+                        </div>
+
+                    </div>
 
                 </div>
             </div>
