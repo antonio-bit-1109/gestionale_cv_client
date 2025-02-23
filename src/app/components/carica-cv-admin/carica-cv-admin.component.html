@@ -100,7 +100,8 @@
                                     <option selected>Scegli il candidato a cui assegnare il cv</option>
                                     <ng-container *ngFor="let user of this.listaUtenti">
                                         <option [value]="user.id_utente">{{this.UpperFirstLetter(user.nome)}}
-                                            {{this.UpperFirstLetter(user.cognome)}}</option>
+                                            {{this.UpperFirstLetter(user.cognome)}}
+                                        </option>
                                     </ng-container>
                                 </select>
                             </div>

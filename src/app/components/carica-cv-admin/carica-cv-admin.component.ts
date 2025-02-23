@@ -46,9 +46,11 @@ export class CaricaCvAdminComponent implements OnInit {
       });
   }
 
+  // metodo pirncipale per inviare il file e i dati aggiuntivi sul server.
   public uploadDataToServer() {
     console.log('sto inviando robe');
     console.log(this.candidatoSelected, 'id candidato selezionato');
+    console.log(this.files, 'files');
   }
 
   choose(event, callback) {
