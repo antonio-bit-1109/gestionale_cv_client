@@ -1,0 +1,39 @@
+<div class="container-fluid min-vh-100 sfondo">
+    <div class="row w-100 justify-content-center p-4">
+        <div class="col-12">
+            <h2 class="text-center">Inserisci nome candidato</h2>
+        </div>
+        <div class="col-12 col-md-8 col-lg-6">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="esperienze" aria-describedby="esperienze"
+                        placeholder="inserisci esperienze da cercare" required formControlName="esperienze">
+
+                </div>
+                <button [disabled]="!this.isFormValid()" type="submit" class="btn btn-primary mt-2">Ricerca
+                    curriculum</button>
+            </form>
+        </div>
+    </div>
+
+    <hr class="my-5">
+    <!-- i curriculum risultanti dalla ricerca verranno mostrati qui sotto -->
+    <ng-container *ngIf="this.listaCv?.length > 0; else noCv">
+        <div class="row">
+            <ng-container *ngFor="let cv of this.listaCv">
+                <div class="col-12 col-md-8 col-lg-4">
+                    <app-orizontal-card [cv]="cv"></app-orizontal-card>
+                </div>
+            </ng-container>
+        </div>
+    </ng-container>
+
+
+    <ng-template #noCv>
+        <div class="row">
+            <div class="col-12">
+                <p class="text-center">nessun curriculum trovato. </p>
+            </div>
+        </div>
+    </ng-template>
+</div>

@@ -122,11 +122,23 @@ export class CaricaCvAdminComponent implements OnInit {
       .uploadCv_admin(form_data)
       .pipe(take(1))
       .subscribe({
-        next: (resp) => {
-          console.log(resp);
+        next: (resp: { message: string }) => {
+          this.toastService.show(
+            'success',
+            resp.message,
+            'upload file',
+            'toastCaricaCv',
+            2000
+          );
         },
         error: (err) => {
-          console.error(err);
+          this.toastService.show(
+            'error',
+            'errore durante il caricamento del file.',
+            'upload file',
+            'toastCaricaCv',
+            2000
+          );
         },
       });
   }

@@ -28,6 +28,10 @@ export class SideBarComponent {
     this.router.navigateByUrl('/home/ricerca-competenza');
   }
 
+  public gotoRicercaCv_NomeCandidato() {
+    this.router.navigateByUrl('/home/ricerca-nome-candidato');
+  }
+
   public goToCaricaCvAdmin() {
     this.router.navigateByUrl('/home/carica-cv-admin');
   }

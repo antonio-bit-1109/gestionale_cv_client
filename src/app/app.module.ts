@@ -34,6 +34,7 @@ import { OrizontalCardComponent } from './components/shared/orizontal-card/orizo
 import { RicercaCvCompetenzaComponent } from './components/ricerca-cv-competenza/ricerca-cv-competenza.component';
 import { VisualizzaCvComponent } from './components/visualizza-cv/visualizza-cv.component';
 import { CaricaCvAdminComponent } from './components/carica-cv-admin/carica-cv-admin.component';
+import { RicercaCvNomeCandidatoComponent } from './components/ricerca-cv-nome-candidato/ricerca-cv-nome-candidato.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { CaricaCvAdminComponent } from './components/carica-cv-admin/carica-cv-a
     RicercaCvCompetenzaComponent,
     VisualizzaCvComponent,
     CaricaCvAdminComponent,
+    RicercaCvNomeCandidatoComponent,
   ],
   imports: [
     BrowserModule,
