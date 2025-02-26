@@ -17,12 +17,11 @@ export class CvService {
     );
   }
 
-  public getDaticv(id_cvVal: string, id_utenteVal: string) {
-    return this.http.post(
+  public getDaticv(id_cvVal: string) {
+    return this.http.get(
       `${
         environment.BASE_URL + environment.URL_CV + environment.GET_SINGOLO_CV
-      }`,
-      { id_utente: id_utenteVal, id_cv: id_cvVal }
+      }/${id_cvVal}`
     );
   }
 
@@ -80,6 +79,14 @@ export class CvService {
       `${
         environment.BASE_URL + environment.URL_CV
       }findByCompetenza?competenza=${competenze}`
+    );
+  }
+
+  public ricerca_cv_nome_candidato(nomeUtente: string) {
+    return this.http.get(
+      `${
+        environment.BASE_URL + environment.URL_CV
+      }findByNome?nome=${nomeUtente}`
     );
   }
 

@@ -6,8 +6,8 @@
         <div class="col-12 col-md-8 col-lg-6">
             <form [formGroup]="form" (ngSubmit)="onSubmit()">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="esperienze" aria-describedby="esperienze"
-                        placeholder="inserisci esperienze da cercare" required formControlName="esperienze">
+                    <input type="text" class="form-control" id="nome" aria-describedby="nome"
+                        placeholder="inserisci nome del candidato da cercare" required formControlName="nome">
 
                 </div>
                 <button [disabled]="!this.isFormValid()" type="submit" class="btn btn-primary mt-2">Ricerca

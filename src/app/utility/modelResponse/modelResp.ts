@@ -26,6 +26,7 @@ export interface IRespListaCV {
 
 export interface Icv {
   id_cv: number;
+  id_utente: number;
   titolo: string;
   esperienze_Precedenti: string;
   competenze: string;

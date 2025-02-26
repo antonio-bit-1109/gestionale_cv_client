@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CvService } from '../../services/cv.service';
-import { Icv } from '../../utility/modelResponse/modelResp';
+import { Icv, IRespListaCV } from '../../utility/modelResponse/modelResp';
+import { filter, map, take } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-ricerca-cv-nome-candidato',
@@ -13,14 +15,16 @@ export class RicercaCvNomeCandidatoComponent {
   public listaCv: Icv[] | undefined;
 
   public form = new FormGroup({
-    esperienze: new FormControl('', [Validators.required]),
+    nome: new FormControl('', [Validators.required]),
   });
 
   constructor(private cvService: CvService) {}
 
   public onSubmit() {
     if (this.isFormValid()) {
-      // this.ricercaCv_per_esperienze();
+      this.ricercaCv_nome_candidato();
+    } else {
+      console.log('form non valido.');
     }
   }
 
@@ -28,17 +32,20 @@ export class RicercaCvNomeCandidatoComponent {
     return this.form.valid;
   }
 
-  // public ricercaCv_per_esperienze() {
-  //   this.cvService
-  //     .ricerca_Cv_esperienze(this.form.controls.esperienze.value)
-  //     .subscribe({
-  //       next: (res: IRespListaCV) => {
-  //         console.log(res);
-  //         this.listaCv = res.listaCV;
-  //       },
-  //       error: (err: HttpErrorResponse) => {
-  //         console.log(err);
-  //       },
-  //     });
-  // }
+  public ricercaCv_nome_candidato() {
+    this.cvService
+      .ricerca_cv_nome_candidato(this.form.controls.nome.value)
+      .pipe(
+        take(1)
+        // map( (resp : IRespListaCV) => resp.listaCV.filter(cv => cv.))
+      )
+      .subscribe({
+        next: (res: IRespListaCV) => {
+          this.listaCv = res.listaCV;
+        },
+        error: (err: HttpErrorResponse) => {
+          console.log(err);
+        },
+      });
+  }
 }

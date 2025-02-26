@@ -14,7 +14,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class VisualizzaCvComponent {
   @Input() cv: Icv | undefined;
   public id_cv: string | undefined;
-  public id_utente: string | undefined;
+  // public id_utente: string | undefined;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -22,7 +22,7 @@ export class VisualizzaCvComponent {
     private authService: AuthService
   ) {
     this.id_cv = this.activatedRoute.snapshot.paramMap.get('id_cv');
-    this.id_utente = this.authService.getIdUser();
+    // this.id_utente = this.authService.getIdUser();
 
     if (this.id_cv) {
       this.getSingoloCV();
@@ -30,7 +30,7 @@ export class VisualizzaCvComponent {
   }
 
   public getSingoloCV() {
-    this.cvService.getDaticv(this.id_cv, this.id_utente).subscribe({
+    this.cvService.getDaticv(this.id_cv).subscribe({
       next: (resp: IRespSingoloCv) => {
         this.cv = resp.cv;
       },

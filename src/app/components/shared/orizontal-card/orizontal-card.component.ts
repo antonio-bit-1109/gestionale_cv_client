@@ -13,13 +13,9 @@ import { AuthService } from '../../../services/auth.service';
 export class OrizontalCardComponent {
   @Input() cv: Icv | undefined;
 
-  constructor(
-    private router: Router,
-    private cvService: CvService,
-    private authService: AuthService
-  ) {}
+  constructor(private router: Router, private cvService: CvService) {}
   public scaricaPdf(cv: Icv) {
-    this.cvService.downloadFile(cv.id_cv, this.authService.getName());
+    this.cvService.downloadFile(cv.id_cv, 'cv_file');
   }
 
   public goToModificaCv(id_cv: number) {

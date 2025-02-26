@@ -52,7 +52,7 @@ export class ModificaCvComponent implements OnInit {
   }
 
   public getDataCvSelezionato() {
-    this.cvService.getDaticv(this.id_cv, this.id_utente).subscribe({
+    this.cvService.getDaticv(this.id_cv).subscribe({
       next: (res: IRespSingoloCv) => {
         this.cv = res.cv;
         this.fillFormDefaultVal();

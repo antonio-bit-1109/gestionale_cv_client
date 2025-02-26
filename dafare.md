@@ -8,3 +8,4 @@
 -[] non dare possibilita di caricare piu di un file nell' upload admin
 
 - [] modifica html ricerca cv nome candidato
+  -[] inserisci caricamento immagine profilo utente
