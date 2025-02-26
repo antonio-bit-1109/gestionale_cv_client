@@ -1,5 +1,6 @@
 import { Component, Input, input } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-side-bar',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 export class SideBarComponent {
   @Input() sidebarVisible: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, public authService: AuthService) {}
 
   public goToGetAllCv() {
     this.router.navigateByUrl('home');
