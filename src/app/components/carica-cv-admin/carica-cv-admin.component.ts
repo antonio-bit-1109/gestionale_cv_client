@@ -6,6 +6,7 @@ import { IGetAllUsers, IUser } from '../../utility/modelResponse/modelResp';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ToastService } from '../../services/toast.service';
 import { FormGroup } from '@angular/forms';
+import { AdminService } from '../../services/admin.service';
 
 @Component({
   selector: 'app-carica-cv-admin',
@@ -33,7 +34,8 @@ export class CaricaCvAdminComponent implements OnInit {
     private config: PrimeNGConfig,
     private messageService: MessageService,
     private userService: UserService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private adminService: AdminService
   ) {}
 
   ngOnInit(): void {
@@ -74,6 +76,19 @@ export class CaricaCvAdminComponent implements OnInit {
       return;
     }
 
+    // se è stato caricato più di un file, svuoto e toast con messaggio errore.
+    // if (this.files.length > 1) {
+    //   this.files.length = 0;
+    //   this.toastService.show(
+    //     'error',
+    //     'non puoi caricare più di un file.',
+    //     'upload file',
+    //     'toastCaricaCv',
+    //     2000
+    //   );
+    //   return;
+    // }
+
     // se nessun candidato è stato selezionato, toast di errore
     if (!this.candidatoSelected) {
       this.toastService.show(
@@ -87,9 +102,33 @@ export class CaricaCvAdminComponent implements OnInit {
     }
 
     // se i campi aggiuntivi del candidato non sono stati compilati, toast di errore.
-    this.checkIfDatiCandidatoFilled();
+    const isAllOk = this.checkIfDatiCandidatoFilled();
+
+    if (!isAllOk) {
+      return;
+    }
 
     const form_data = new FormData();
+    form_data.append('titolo', this.titolo);
+    form_data.append('competenze', this.competenze);
+    form_data.append('descrizione_generale', this.descrizione);
+    form_data.append('esperienze_precedenti', this.esperienze);
+    form_data.append('istruzione', this.istruzione);
+    form_data.append('lingue_conosciute', this.lingue);
+    form_data.append('id_utente', this.candidatoSelected);
+    form_data.append('file', this.files[0]);
+
+    this.adminService
+      .uploadCv_admin(form_data)
+      .pipe(take(1))
+      .subscribe({
+        next: (resp) => {
+          console.log(resp);
+        },
+        error: (err) => {
+          console.error(err);
+        },
+      });
   }
 
   // metodo per assicurarsi che tutti i dati necessari per il salvataggio del cv siano presenti.

@@ -10,4 +10,5 @@ export const environment = {
   CREATE_CV: 'create',
   DELETE_CV: 'delete',
   GET_ALL_USERS: 'get/all',
+  ADMIN_UPLOAD_CV: 'admin/assignment',
 };
