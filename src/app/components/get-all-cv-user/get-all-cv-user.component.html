@@ -33,6 +33,7 @@
                                 <p class="mb-1"><strong>Competenze:</strong> {{ cv.competenze }}</p>
                                 <p class="mb-1"><strong>Istruzione:</strong> {{ cv.istruzione }}</p>
                                 <p class="mb-1"><strong>Lingue:</strong> {{ cv.lingueConosciute }}</p>
+                                <p class="mb-1"><strong>Data creazione:</strong> {{ cv.created_at | date }}</p>
                                 <div class="d-flex gap-1 my-3">
                                     <button (click)="this.scaricaPdf(cv)" class="btn btn-primary">
                                         <i class="pi pi-download" style="font-size: 1rem"></i>

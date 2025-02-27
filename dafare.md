@@ -9,3 +9,4 @@
 
 - [] modifica html ricerca cv nome candidato
   -[] inserisci caricamento immagine profilo utente, rendi modificabile immagine profilo
+  -[] se admin modifica un curriculum quel curriculum diventa a suo nome quando viene scaricato
