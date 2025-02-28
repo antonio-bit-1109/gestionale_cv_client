@@ -36,6 +36,7 @@ import { VisualizzaCvComponent } from './components/visualizza-cv/visualizza-cv.
 import { CaricaCvAdminComponent } from './components/carica-cv-admin/carica-cv-admin.component';
 import { RicercaCvNomeCandidatoComponent } from './components/ricerca-cv-nome-candidato/ricerca-cv-nome-candidato.component';
 import { ProfiloUtenteComponent } from './components/profilo-utente/profilo-utente.component';
+import { ModificaImgProfiloComponent } from './components/modifica-img-profilo/modifica-img-profilo.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { ProfiloUtenteComponent } from './components/profilo-utente/profilo-uten
     CaricaCvAdminComponent,
     RicercaCvNomeCandidatoComponent,
     ProfiloUtenteComponent,
+    ModificaImgProfiloComponent,
   ],
   imports: [
     BrowserModule,

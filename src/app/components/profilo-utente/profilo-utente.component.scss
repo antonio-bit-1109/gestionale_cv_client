@@ -1,0 +1,25 @@
+.img-profile {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.sub-logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+}
+
+.custom-position {
+  position: absolute;
+  bottom: 27px;
+  left: 183px;
+}
+
+.scale {
+  transition: transform 0.3s ease-in-out; // Aggiungi la transizione qui
+}
+
+.scale:hover {
+  transform: scale(1.03); // Usa transform invece di scale
+}

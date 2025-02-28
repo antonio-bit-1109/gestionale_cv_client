@@ -1,5 +1,17 @@
 <div class="container-fluid sfondo min-vh-100">
     <div class="row">
-        <div class="col-12"></div>
+        <div class="col-12">
+            <div class="p-4 position-relative">
+                <div (click)="this.openModal()"
+                    class="bg-white sub-logo d-flex justify-content-center align-items-center custom-position pointer scale">
+                    <i class="pi pi-pen-to-square fs-4"></i>
+                </div>
+                <img class="d-inline mx-3 img-profile" [src]="this.profileImage" alt="img">
+            </div>
+        </div>
     </div>
+
+    <app-modal-generic [visible]="this.showModal">
+        <app-modifica-img-profilo></app-modifica-img-profilo>
+    </app-modal-generic>
 </div>
