@@ -39,4 +39,14 @@ export class UserService {
       }`
     );
   }
+
+  public getProfileImage(userId: string) {
+    return this.http.get(
+      `${
+        environment.BASE_URL +
+        environment.URL_USER +
+        environment.GET_USER_PROFILE_IMAGE
+      }/${userId}`
+    );
+  }
 }

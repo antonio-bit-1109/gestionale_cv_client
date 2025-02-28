@@ -11,4 +11,5 @@ export const environment = {
   DELETE_CV: 'delete',
   GET_ALL_USERS: 'get/all',
   ADMIN_UPLOAD_CV: 'admin/assignment',
+  GET_USER_PROFILE_IMAGE: 'get/profile/image',
 };

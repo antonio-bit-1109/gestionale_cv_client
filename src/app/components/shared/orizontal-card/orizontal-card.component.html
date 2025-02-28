@@ -16,7 +16,17 @@
                 <p class="card-text"><strong>Istruzione:</strong> {{ cv.istruzione }}</p>
                 <p class="card-text"><strong>Lingue:</strong> {{ cv.lingueConosciute }}</p>
                 <p class="card-text"><strong>Data creazione:</strong> {{ cv.created_at | date }}</p>
-
+                <div>
+                    <p class="mb-1"><strong>Data creazione:</strong> {{ cv.created_at | date }}</p>
+                    <ng-template [ngIf]="cv.updated_at" [ngIfElse]="noUpdate">
+                        <p class="mb-1"><strong>Data ultima modifica:</strong> {{ cv.updated_at | date
+                            }}</p>
+                    </ng-template>
+                    <ng-template #noUpdate>
+                        <p class="mb-1"><strong>Data ultima modifica:</strong> Nessuna modifica.
+                        </p>
+                    </ng-template>
+                </div>
             </div>
         </div>
         <div class="col-md-3">
