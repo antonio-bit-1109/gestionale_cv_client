@@ -9,7 +9,7 @@
             <i class="pi pi-angle-right" style="color: #708090"></i>
             Vai ai tuoi Curriculum</button>
 
-        <button class="btn btn-transparent scale">
+        <button (click)="this.goToProfiloUtente()" class="btn btn-transparent scale">
             <i class="pi pi-angle-right" style="color: #708090"></i>
             Vai al profilo</button>
         <ng-container *ngIf="this.authService.isAdmin()">

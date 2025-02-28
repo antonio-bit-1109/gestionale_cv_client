@@ -36,4 +36,8 @@ export class SideBarComponent {
   public goToCaricaCvAdmin() {
     this.router.navigateByUrl('/home/carica-cv-admin');
   }
+
+  public goToProfiloUtente() {
+    this.router.navigateByUrl('/home/profilo-utente');
+  }
 }

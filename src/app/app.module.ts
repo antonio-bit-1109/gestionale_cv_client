@@ -35,6 +35,7 @@ import { RicercaCvCompetenzaComponent } from './components/ricerca-cv-competenza
 import { VisualizzaCvComponent } from './components/visualizza-cv/visualizza-cv.component';
 import { CaricaCvAdminComponent } from './components/carica-cv-admin/carica-cv-admin.component';
 import { RicercaCvNomeCandidatoComponent } from './components/ricerca-cv-nome-candidato/ricerca-cv-nome-candidato.component';
+import { ProfiloUtenteComponent } from './components/profilo-utente/profilo-utente.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { RicercaCvNomeCandidatoComponent } from './components/ricerca-cv-nome-ca
     VisualizzaCvComponent,
     CaricaCvAdminComponent,
     RicercaCvNomeCandidatoComponent,
+    ProfiloUtenteComponent,
   ],
   imports: [
     BrowserModule,

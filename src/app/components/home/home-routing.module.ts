@@ -12,6 +12,7 @@ import { VisualizzaCvComponent } from '../visualizza-cv/visualizza-cv.component'
 import { CaricaCvAdminComponent } from '../carica-cv-admin/carica-cv-admin.component';
 import { isAdminGuard } from '../../guards/is-admin.guard';
 import { RicercaCvNomeCandidatoComponent } from '../ricerca-cv-nome-candidato/ricerca-cv-nome-candidato.component';
+import { ProfiloUtenteComponent } from '../profilo-utente/profilo-utente.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
       { path: 'crea-cv', component: CreaCvComponent },
       { path: 'ricerca-esperienze', component: RicercaCvEsperienzeComponent },
       { path: 'ricerca-competenza', component: RicercaCvCompetenzaComponent },
+      { path: 'profilo-utente', component: ProfiloUtenteComponent },
       {
         path: 'ricerca-nome-candidato',
         component: RicercaCvNomeCandidatoComponent,
