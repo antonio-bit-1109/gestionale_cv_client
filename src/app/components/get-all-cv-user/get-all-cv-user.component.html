@@ -33,7 +33,6 @@
                                 <p class="mb-1"><strong>Competenze:</strong> {{ cv.competenze }}</p>
                                 <p class="mb-1"><strong>Istruzione:</strong> {{ cv.istruzione }}</p>
                                 <p class="mb-1"><strong>Lingue:</strong> {{ cv.lingueConosciute }}</p>
-                                <p class="mb-1"><strong>Data creazione:</strong> {{ cv.created_at | date }}</p>
                                 <div class="d-flex gap-1 my-3">
                                     <button (click)="this.scaricaPdf(cv)" class="btn btn-primary">
                                         <i class="pi pi-download" style="font-size: 1rem"></i>
@@ -47,6 +46,17 @@
                                     <button (click)="this.showModal(cv)" class="btn btn-danger">
                                         <i class="pi pi-trash" style="font-size: 1rem"></i>
                                     </button>
+                                </div>
+                                <div>
+                                    <p class="mb-1"><strong>Data creazione:</strong> {{ cv.created_at | date }}</p>
+                                    <ng-template [ngIf]="cv.updated_at" [ngIfElse]="noUpdate">
+                                        <p class="mb-1"><strong>Data ultima modifica:</strong> {{ cv.updated_at | date
+                                            }}</p>
+                                    </ng-template>
+                                    <ng-template #noUpdate>
+                                        <p class="mb-1"><strong>Data ultima modifica:</strong> Nessuna modifica.
+                                        </p>
+                                    </ng-template>
                                 </div>
                             </div>
                         </div>

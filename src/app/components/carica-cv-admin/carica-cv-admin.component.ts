@@ -7,6 +7,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ToastService } from '../../services/toast.service';
 import { FormGroup } from '@angular/forms';
 import { AdminService } from '../../services/admin.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-carica-cv-admin',
@@ -35,7 +36,8 @@ export class CaricaCvAdminComponent implements OnInit {
     private messageService: MessageService,
     private userService: UserService,
     private toastService: ToastService,
-    private adminService: AdminService
+    private adminService: AdminService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -75,19 +77,6 @@ export class CaricaCvAdminComponent implements OnInit {
       );
       return;
     }
-
-    // se è stato caricato più di un file, svuoto e toast con messaggio errore.
-    // if (this.files.length > 1) {
-    //   this.files.length = 0;
-    //   this.toastService.show(
-    //     'error',
-    //     'non puoi caricare più di un file.',
-    //     'upload file',
-    //     'toastCaricaCv',
-    //     2000
-    //   );
-    //   return;
-    // }
 
     // se nessun candidato è stato selezionato, toast di errore
     if (!this.candidatoSelected) {
@@ -130,6 +119,11 @@ export class CaricaCvAdminComponent implements OnInit {
             'toastCaricaCv',
             2000
           );
+
+          // redirect alla home
+          setTimeout(() => {
+            this.router.navigateByUrl('/home');
+          }, 2000);
         },
         error: (err) => {
           this.toastService.show(
