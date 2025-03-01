@@ -25,6 +25,14 @@ export class ModificaImgProfiloComponent {
 
   public emitClose() {
     this.closeModal.emit(false);
+    this.form.controls.file.patchValue(null);
+  }
+
+  public onFileChange(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.form.controls.file.setValue(input.files[0]);
+    }
   }
 
   public onSubmit() {
@@ -32,7 +40,7 @@ export class ModificaImgProfiloComponent {
       console.error("inserisci un file per l'upload della foto.");
       return;
     }
-    // console.log(this.form.controls.file.value);
+    console.log(this.form.controls.file.value);
 
     const formData = new FormData();
     formData.append('file', this.form.controls.file.value);
@@ -43,6 +51,7 @@ export class ModificaImgProfiloComponent {
     this.userService.changeImageProfile(formData).subscribe({
       next: (resp) => {
         console.log(resp);
+        this.emitClose();
       },
       error: (err: HttpErrorResponse) => {
         console.error(err.error);

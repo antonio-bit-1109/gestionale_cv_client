@@ -1,8 +1,8 @@
-<h3>Carica nuova immagine del profilo</h3>
+<h3>Carica immagine del profilo</h3>
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="mb-3">
         <label for="img_profilo" class="form-label">Carica Immagine profilo</label>
-        <input type="file" class="form-control" id="img_profilo" name="img_profilo" formControlName="file">
+        <input class="form-control" type="file" formControlName="file" (change)="onFileChange($event)" />
     </div>
     <div class="d-flex gap-1">
         <button [disabled]="!this.formIsValid" class="btn btn-primary" type="submit">Carica</button>
