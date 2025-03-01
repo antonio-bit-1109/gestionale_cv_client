@@ -12,6 +12,6 @@
     </div>
 
     <app-modal-generic [visible]="this.showModal">
-        <app-modifica-img-profilo></app-modifica-img-profilo>
+        <app-modifica-img-profilo (closeModal)="this.closeModalEvent($event)"></app-modifica-img-profilo>
     </app-modal-generic>
 </div>

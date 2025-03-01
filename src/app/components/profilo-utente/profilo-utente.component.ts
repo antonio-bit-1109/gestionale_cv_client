@@ -37,4 +37,8 @@ export class ProfiloUtenteComponent implements OnInit {
   public openModal() {
     this.showModal = true;
   }
+
+  public closeModalEvent(event: boolean) {
+    this.showModal = event;
+  }
 }
