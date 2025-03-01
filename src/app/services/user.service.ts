@@ -49,4 +49,15 @@ export class UserService {
       }/${userId}`
     );
   }
+
+  public changeImageProfile(formData: FormData) {
+    return this.http.post(
+      `${
+        environment.BASE_URL +
+        environment.URL_USER +
+        environment.USER_UPLOAD_PHOTO
+      }`,
+      formData
+    );
+  }
 }

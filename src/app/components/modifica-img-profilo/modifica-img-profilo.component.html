@@ -1,9 +1,11 @@
 <h3>Carica nuova immagine del profilo</h3>
-<form>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="mb-3">
         <label for="img_profilo" class="form-label">Carica Immagine profilo</label>
-        <input type="file" class="form-control" id="img_profilo" name="img_profilo">
+        <input type="file" class="form-control" id="img_profilo" name="img_profilo" formControlName="file">
     </div>
-    <button type="submit">Carica</button>
-    <button (click)="this.emitClose()" type="button">chiudi</button>
+    <div class="d-flex gap-1">
+        <button [disabled]="!this.formIsValid" class="btn btn-primary" type="submit">Carica</button>
+        <button class="btn btn-danger" (click)="this.emitClose()" type="button">chiudi</button>
+    </div>
 </form>

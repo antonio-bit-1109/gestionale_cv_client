@@ -12,4 +12,5 @@ export const environment = {
   GET_ALL_USERS: 'get/all',
   ADMIN_UPLOAD_CV: 'admin/assignment',
   GET_USER_PROFILE_IMAGE: 'get/profile/image',
+  USER_UPLOAD_PHOTO: 'upload/photo',
 };
