@@ -6,6 +6,7 @@
 
 - [x] modifica html ricerca cv nome candidato
 
--[] inserisci caricamento immagine profilo utente, rendi modificabile immagine profilo
+-[x] inserisci caricamento immagine profilo utente, rendi modificabile immagine profilo
 
--[] gestione modale per modifica profilo utente
+-[x] gestione modale per modifica profilo utente
+-[] una volta che l'immagine viene cambiata con successo crea un subject che notifica alla navbar e alla foto del profilo di rifare la fetch dell'immagine

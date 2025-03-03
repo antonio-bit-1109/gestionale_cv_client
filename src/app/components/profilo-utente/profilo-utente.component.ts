@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { AuthService } from '../../services/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-profilo-utente',
@@ -15,7 +16,8 @@ export class ProfiloUtenteComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private authService: AuthService
+    private authService: AuthService,
+    private toastService: ToastService
   ) {}
 
   ngOnInit(): void {
@@ -40,5 +42,18 @@ export class ProfiloUtenteComponent implements OnInit {
 
   public closeModalEvent(event: boolean) {
     this.showModal = event;
+  }
+
+  // quando nel componente figlio app-modifica-img-profilo il caricamento del file avviene con successo o con errore viene notificato questo componente padre che chiama il toast message e mostra il messaggio ritornato dal server.
+  public showToast(event: string) {
+    const index = event.indexOf('/');
+    const severity = event.substring(index + 1);
+
+    this.toastService.show(
+      severity,
+      event.substring(0, index),
+      'modifica immagine profilo',
+      'toast'
+    );
   }
 }

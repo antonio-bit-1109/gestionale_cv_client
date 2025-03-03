@@ -14,6 +14,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class ModificaImgProfiloComponent {
   @Output() closeModal = new EventEmitter();
 
+  @Output() notifySuccess = new EventEmitter<string>();
+
   constructor(
     private authService: AuthService,
     private userService: UserService
@@ -49,12 +51,17 @@ export class ModificaImgProfiloComponent {
     console.log(formData);
 
     this.userService.changeImageProfile(formData).subscribe({
-      next: (resp) => {
+      next: (resp: { message: string }) => {
         console.log(resp);
         this.emitClose();
+        this.notifySuccess.emit(`${resp.message}/success`);
       },
       error: (err: HttpErrorResponse) => {
         console.error(err.error);
+        this.emitClose();
+        this.notifySuccess.emit(
+          "impossibile caricare l'immagine. Riprova più tardi/error"
+        );
       },
     });
   }

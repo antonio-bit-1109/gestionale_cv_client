@@ -1,4 +1,7 @@
 <div class="container-fluid sfondo min-vh-100">
+
+    <p-toast key="toast" />
+
     <div class="row">
         <div class="col-12">
             <div class="p-4 position-relative">
@@ -12,6 +15,7 @@
     </div>
 
     <app-modal-generic [visible]="this.showModal">
-        <app-modifica-img-profilo (closeModal)="this.closeModalEvent($event)"></app-modifica-img-profilo>
+        <app-modifica-img-profilo (notifySuccess)="this.showToast($event)"
+            (closeModal)="this.closeModalEvent($event)"></app-modifica-img-profilo>
     </app-modal-generic>
 </div>
