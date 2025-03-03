@@ -39,6 +39,14 @@ export class NavbarComponent implements OnInit {
 
     // prendere dal server l'immagine del profilo dell'utente e mostrarlo in navbar
     this.getImageProfile();
+
+    this.subjectService.getNotify_change_img().subscribe({
+      next: (reload: null | boolean) => {
+        if (reload) {
+          this.getImageProfile();
+        }
+      },
+    });
   }
 
   public getImageProfile() {

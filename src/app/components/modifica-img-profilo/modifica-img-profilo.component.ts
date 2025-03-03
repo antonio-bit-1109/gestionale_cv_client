@@ -4,6 +4,7 @@ import { ToastService } from '../../services/toast.service';
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { SubjectService } from '../../services/subject.service';
 
 @Component({
   selector: 'app-modifica-img-profilo',
@@ -18,7 +19,8 @@ export class ModificaImgProfiloComponent {
 
   constructor(
     private authService: AuthService,
-    private userService: UserService
+    private userService: UserService,
+    private subjectService: SubjectService
   ) {}
 
   public form = new FormGroup({
@@ -55,6 +57,7 @@ export class ModificaImgProfiloComponent {
         console.log(resp);
         this.emitClose();
         this.notifySuccess.emit(`${resp.message}/success`);
+        this.subjectService.notify_reload_img_profile_ON();
       },
       error: (err: HttpErrorResponse) => {
         console.error(err.error);

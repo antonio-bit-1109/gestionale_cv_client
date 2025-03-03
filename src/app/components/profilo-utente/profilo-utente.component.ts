@@ -3,6 +3,7 @@ import { UserService } from '../../services/user.service';
 import { AuthService } from '../../services/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ToastService } from '../../services/toast.service';
+import { SubjectService } from '../../services/subject.service';
 
 @Component({
   selector: 'app-profilo-utente',
@@ -17,11 +18,20 @@ export class ProfiloUtenteComponent implements OnInit {
   constructor(
     private userService: UserService,
     private authService: AuthService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private subjectService: SubjectService
   ) {}
 
   ngOnInit(): void {
     this.getImageProfile();
+
+    this.subjectService.getNotify_change_img().subscribe({
+      next: (reload: null | boolean) => {
+        if (reload) {
+          this.getImageProfile();
+        }
+      },
+    });
   }
 
   public getImageProfile() {

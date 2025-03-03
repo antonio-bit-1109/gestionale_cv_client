@@ -8,7 +8,7 @@ export class SubjectService {
   public messaggio = new BehaviorSubject<string | null>(null);
   public invitaCreazioneCv = new BehaviorSubject<true | null>(null);
 
-  // public notifyChangeImg = new BehaviorSubject<null | boolean>(null);
+  public notifyChangeImg = new BehaviorSubject<null | boolean>(null);
 
   // public showModalChangeImgProfilo = new BehaviorSubject<null | boolean>(null);
   constructor() {}
@@ -39,4 +39,18 @@ export class SubjectService {
   }
 
   //-----------------------------------------------------------//
+
+  //subject che notifica che l'immagine del profilo è stata cambiata con successo
+
+  public notify_reload_img_profile_ON() {
+    this.notifyChangeImg.next(true);
+  }
+
+  public notify_reload_img_profile_OFF() {
+    this.notifyChangeImg.next(null);
+  }
+
+  public getNotify_change_img() {
+    return this.notifyChangeImg.asObservable();
+  }
 }
