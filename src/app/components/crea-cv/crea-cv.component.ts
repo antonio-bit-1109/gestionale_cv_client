@@ -78,6 +78,17 @@ export class CreaCvComponent implements OnInit {
     console.log(this.form.value);
 
     if (this.isFormValid()) {
+      if (this.lingueSelezionate.length === 0) {
+        //
+        this.toastService.show(
+          'error',
+          'inserisci lungue conosciute',
+          'dati mancanti',
+          'toastCreaCv'
+        );
+        return;
+      }
+
       this.form.controls.lingueConosciute.patchValue(
         this.stringifyArrayLingue()
       );
