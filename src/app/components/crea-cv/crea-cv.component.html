@@ -52,14 +52,41 @@
                 </div>
                 <div class="form-group my-3">
                     <label for="lingueConosciute">Lingue conosciute</label>
-                    <input type="text" class="form-control" id="lingueConosciute"
+                    <!-- <input type="text" class="form-control" id="lingueConosciute"
                         placeholder="Inserisci le lingue che conosci" name="lingueConosciute"
-                        formControlName="lingueConosciute">
+                        formControlName="lingueConosciute"> -->
+                    <!-- <select name="lingueConosciute" id="lingueConosciute">
+                        <option value="inglese">Inglese</option>
+                        <option value="francese">Francese</option>
+                        <option value="spagnolo">Spagnolo</option>
+                        <option value="tedesco">Tedesco</option>
+                        <option value="italiano">Italiano</option>
 
-                    <p class="text-danger" *ngIf="this.form.controls.lingueConosciute.touched && 
+                    </select> -->
+                    <select multiple (change)="this.onLinguaChange($event)" name="lingueConosciute"
+                        id="lingueConosciute" class="form-select" aria-label="Default select example">
+                        <option selected>Seleziona una lingua</option>
+                        <option value="inglese">Inglese</option>
+                        <option value="francese">Francese</option>
+                        <option value="spagnolo">Spagnolo</option>
+                        <option value="tedesco">Tedesco</option>
+                        <option value="italiano">Italiano</option>
+                        <option value="altro">Altro</option>
+                    </select>
+
+                    <!-- <p class="text-danger" *ngIf="this.form.controls.lingueConosciute.touched && 
                     this.form.controls.lingueConosciute.hasError('required')">
                         obbligatorio inserire almeno una lingua.
-                    </p>
+                    </p> -->
+                    <div class="d-flex justify-content-center flex-column">
+                        <ng-container *ngFor="let lingua of this.lingueSelezionate">
+                            <p class="m-0 p-1"> * {{lingua}}
+                                <i (click)="this.deleteLanguage(lingua)" class="pi pi-delete-left pointer text-danger"
+                                    style="font-size: 1rem"></i>
+
+                            </p>
+                        </ng-container>
+                    </div>
 
                 </div>
 
@@ -76,7 +103,7 @@
 
                 </div>
 
-                <button [disabled]="!this.isFormValid()" type="submit" class="btn btn-primary">Crea curriculum</button>
+                <button type="submit" class="btn btn-primary">Crea curriculum</button>
             </form>
         </div>
     </div>

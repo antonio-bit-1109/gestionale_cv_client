@@ -15,12 +15,13 @@ import { ValidationRespError } from '../../utility/modelResponse/modelResp';
   styleUrl: './crea-cv.component.scss',
 })
 export class CreaCvComponent implements OnInit {
+  public lingueSelezionate: string[] = [];
   public form = new FormGroup({
     titolo: new FormControl('', [Validators.required]),
     competenze: new FormControl('', [Validators.required]),
     istruzione: new FormControl('', [Validators.required]),
     esperienzePrecedenti: new FormControl('', [Validators.required]),
-    lingueConosciute: new FormControl('', [Validators.required]),
+    lingueConosciute: new FormControl('', []),
     descrizioneGenerale: new FormControl('', [Validators.required]),
   });
 
@@ -39,10 +40,48 @@ export class CreaCvComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  public onLinguaChange(event) {
+    const options = event.target.options;
+    // this.lingueSelezionate = [];
+    for (let i = 0; i < options.length; i++) {
+      if (options[i].selected) {
+        if (!this.lingueSelezionate.includes(options[i].value)) {
+          this.lingueSelezionate.push(options[i].value);
+        }
+      }
+    }
+    console.log('lingue selezionate', this.lingueSelezionate);
+  }
+
+  public deleteLanguage(lingua: string) {
+    this.lingueSelezionate = this.lingueSelezionate.filter(
+      (l) => l.toLowerCase().trim() !== lingua.toLowerCase().trim()
+    );
+  }
+
+  public stringifyArrayLingue(): string {
+    let outputString = '';
+
+    for (let i = 0; i < this.lingueSelezionate.length; i++) {
+      let lingua = this.lingueSelezionate[i];
+
+      if (i === this.lingueSelezionate.length - 1) {
+        outputString += ` ${lingua}`;
+      } else {
+        outputString += `${lingua}, `;
+      }
+    }
+    return outputString;
+  }
+
   public onSubmit() {
     console.log(this.form.value);
 
     if (this.isFormValid()) {
+      this.form.controls.lingueConosciute.patchValue(
+        this.stringifyArrayLingue()
+      );
+
       const dataCreazCv: IEdit_Create_Cv = {
         competenze: this.form.controls.competenze.value,
         descrizioneGenerale: this.form.controls.descrizioneGenerale.value,
@@ -53,6 +92,7 @@ export class CreaCvComponent implements OnInit {
         titolo: this.form.controls.titolo.value,
       };
 
+      console.log(dataCreazCv, 'dati cv');
       this.cvService.createCv(dataCreazCv).subscribe({
         next: (resp: { message: string }) => {
           console.log(resp);

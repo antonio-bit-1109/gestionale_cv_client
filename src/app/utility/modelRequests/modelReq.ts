@@ -19,6 +19,6 @@ export interface IEdit_Create_Cv {
   competenze: string;
   istruzione: string;
   esperienzePrecedenti: string;
-  lingueConosciute: string;
+  lingueConosciute?: string;
   descrizioneGenerale: string;
 }
