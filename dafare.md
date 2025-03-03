@@ -10,5 +10,5 @@
 
 -[x] gestione modale per modifica profilo utente
 
--[] una volta che l'immagine viene cambiata con successo crea un subject che notifica alla navbar e alla foto del profilo di rifare la fetch dell'immagine
+-[x] una volta che l'immagine viene cambiata con successo crea un subject che notifica alla navbar e alla foto del profilo di rifare la fetch dell'immagine
 -[] metti i campi text sui valori tipo esperienze, e una select invece per quanto riguarda le voci delle lingue
