@@ -4,6 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ToastService } from '../../services/toast.service';
 import { SubjectService } from '../../services/subject.service';
+import { IGetUser, IUser } from '../../utility/modelResponse/modelResp';
 
 @Component({
   selector: 'app-profilo-utente',
@@ -15,6 +16,7 @@ export class ProfiloUtenteComponent implements OnInit {
   public profileImage: string | undefined;
   public showModal = false;
 
+  public user: IUser | undefined;
   constructor(
     private userService: UserService,
     private authService: AuthService,
@@ -24,12 +26,24 @@ export class ProfiloUtenteComponent implements OnInit {
 
   ngOnInit(): void {
     this.getImageProfile();
-
+    this.getUserData();
     this.subjectService.getNotify_change_img().subscribe({
       next: (reload: null | boolean) => {
         if (reload) {
           this.getImageProfile();
         }
+      },
+    });
+  }
+
+  public getUserData() {
+    this.userService.getUserData(this.authService.getIdUser()).subscribe({
+      next: (resp: IGetUser) => {
+        console.log(resp);
+        this.user = resp.getUtenteDto;
+      },
+      error: (err: HttpErrorResponse) => {
+        console.log(err.error);
       },
     });
   }

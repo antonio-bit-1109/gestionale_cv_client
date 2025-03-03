@@ -2,8 +2,8 @@
 
     <p-toast key="toast" />
 
-    <div class="row">
-        <div class="col-12">
+    <div class="row justify-content-sm-center justify-content-md-end">
+        <div class="col-12 col-md-4 col-lg-3 ">
             <div class="p-4 position-relative">
                 <div (click)="this.openModal()"
                     class="bg-white sub-logo d-flex justify-content-center align-items-center custom-position pointer scale">
@@ -12,6 +12,22 @@
                 <img class="d-inline mx-3 img-profile" [src]="this.profileImage" alt="img">
             </div>
         </div>
+
+        <div class="col-12 col-md-8 col-lg-9">
+            <ng-container *ngIf="this.user">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <p><strong>Email:</strong> {{this.user.email}}</p>
+                    <p><strong>Nome:</strong> {{this.user.nome}}</p>
+                    <p><strong>Cognome:</strong> {{this.user.cognome}}</p>
+                    <p><strong>Attivo:</strong> {{this.user.isActive}}</p>
+                    <p><strong>Ruolo:</strong> {{this.user.ruolo}}</p>
+                    <p><strong>Telefono:</strong> {{this.user.telefono}}</p>
+                </div>
+
+
+            </ng-container>
+        </div>
+
     </div>
 
     <app-modal-generic [visible]="this.showModal">

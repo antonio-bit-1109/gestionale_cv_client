@@ -64,4 +64,10 @@ export class UserService {
       { headers }
     );
   }
+
+  public getUserData(id_utente: string) {
+    return this.http.get(
+      `${environment.BASE_URL + environment.URL_USER}get/${id_utente}`
+    );
+  }
 }

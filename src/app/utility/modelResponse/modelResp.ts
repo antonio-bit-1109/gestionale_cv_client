@@ -66,3 +66,8 @@ export interface IRespListaCv {
   listaCV: Icv[];
   message: string | null;
 }
+
+export interface IGetUser {
+  msg: null;
+  getUtenteDto: IUser;
+}
