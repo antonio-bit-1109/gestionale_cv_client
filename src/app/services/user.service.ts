@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../utility/environments/environment';
 import { IRegistrationReq } from '../utility/modelRequests/modelReq';
@@ -51,13 +51,17 @@ export class UserService {
   }
 
   public changeImageProfile(formData: FormData) {
+    const headers = new HttpHeaders({
+      enctype: 'multipart/form-data',
+    });
     return this.http.post(
       `${
         environment.BASE_URL +
         environment.URL_USER +
         environment.USER_UPLOAD_PHOTO
       }`,
-      formData
+      formData,
+      { headers }
     );
   }
 }
